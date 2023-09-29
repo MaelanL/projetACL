@@ -39,7 +39,7 @@ export class Home extends React.Component<HomeProperties,HomeState>
   componentDidMount(): void
 	{
 		// test
-    fetch('/api/cards/solitaire')
+    fetch('/api/cards/jeu')
         .then(response => {
 					return response.json();
         })
