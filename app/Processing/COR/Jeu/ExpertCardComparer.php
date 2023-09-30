@@ -11,7 +11,7 @@ public abstract class ExpertCardComparer extends ExpertCard {
 
     private $nextComparer;
 
-    public function setNext(ExpertCardComparer $nextComparer) {
+    public function set_next(ExpertCardComparer $nextComparer) {
         $this->nextComparer = $nextComparer;
     }
 
