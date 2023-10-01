@@ -16,28 +16,20 @@ use Inertia\Inertia;
 |
 */
 
+
+
+
+Route::get('/jeu', function () {
+    return Inertia::render('Game/Jeu');
+})->name("jeu.app");
+
+Route::get('/solitaire', function () {
+	return Inertia::render('Game/Jeu');
+})->name("solitaire.app");
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+	return Inertia::render('Home');
+})->name("home");
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-
-Route::get('/pseudo', function () {
-    return Inertia::render('PseudoApp');
-})->name("pseudoapp");
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';

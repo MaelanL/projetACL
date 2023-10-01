@@ -1,99 +1,89 @@
-import { useState, createContext, useContext, Fragment, PropsWithChildren, Dispatch, SetStateAction } from 'react';
-import { Link, InertiaLinkProps } from '@inertiajs/react';
-import { Transition } from '@headlessui/react';
+import React from "react";
 
-const DropDownContext = createContext<{
-    open: boolean;
-    setOpen: Dispatch<SetStateAction<boolean>>;
-    toggleOpen: () => void;
-}>({
-    open: false,
-    setOpen: () => {},
-    toggleOpen: () => {},
-});
+/**
+ * Interface des propriétés d'un accordéon dépliable.
+ */
+interface DropdownProperties
+{
+	/**
+	 * Détermine si l'accordéon est replié par défaut ou non.
+	 * Si la propriété n'est pas renseignée, il ne l'est pas.
+	 */
+	collapsedByDefault?: boolean;
 
-const Dropdown = ({ children }: PropsWithChildren) => {
-    const [open, setOpen] = useState(false);
+	/**
+	 * Le contenu à afficher lorsque l'accordéon est replié.
+	 */
+	collapsedContent?: React.ReactNode;
+}
 
-    const toggleOpen = () => {
-        setOpen((previousState) => !previousState);
-    };
+/**
+ * Interface de l'état d'un accordéeon dépliable.
+ */
+interface DropdownState
+{
+	collapseContent: boolean;
+}
 
-    return (
-        <DropDownContext.Provider value={{ open, setOpen, toggleOpen }}>
-            <div className="relative">{children}</div>
-        </DropDownContext.Provider>
-    );
-};
+/**
+ * Composant d'un accordéon dépliable.
+ */
+export class Dropdown extends React.Component<React.PropsWithChildren<DropdownProperties>, DropdownState>
+{
+	constructor(props: DropdownProperties)
+	{
+		super(props);
+		if(this.props?.collapsedByDefault){
+			this.state = {collapseContent: true};
+		} else {
+			this.state = {collapseContent: false};
+		}
+	}
 
-const Trigger = ({ children }: PropsWithChildren) => {
-    const { open, setOpen, toggleOpen } = useContext(DropDownContext);
+	/**
+	 * Méthode d'affichage / compression du contenu.
+	 * @protected
+	 */
+	protected handleCollapseClick()
+	{
+		// On inverse la propriété de l'état indiquant si le contenu doit être collapsé ou non.
+		this.setState({collapseContent: !this.state.collapseContent});
+	}
 
-    return (
-        <>
-            <div onClick={toggleOpen}>{children}</div>
+	render()
+	{
+		// @ts-ignore
+		return (
+			<div className={`dropdown ${this.state.collapseContent ? "collapsed" : ""}`}>
+				<p>
+					{(this.state.collapseContent ? "Déplier" : "Replier") + " le contenu"}
+					<button className={"collapse-dropdown icon-only"}
+									type={"button"}
+									onClick={this.handleCollapseClick.bind(this)}
+					>
+						{this.state.collapseContent ?
+							<i className="ri-arrow-down-s-line"></i>
+							:
+							<i className="ri-arrow-up-s-line"></i>
+						}
+					</button>
+				</p>
 
-            {open && <div className="fixed inset-0 z-40" onClick={() => setOpen(false)}></div>}
-        </>
-    );
-};
+				{
+					!this.state.collapseContent ?
+						<div className={"dropdown-content"}>
+							{this.props.children}
+						</div>
+						:
+						<button className={"flat show-content"}
+										type={"button"}
+										onClick={this.handleCollapseClick.bind(this)}
+						>
+							{this.props.collapsedContent ? this.props.collapsedContent : "Afficher le contenu"}
+						</button>
+				}
+			</div>
 
-const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-white', children }: PropsWithChildren<{ align?: 'left'|'right', width?: '48', contentClasses?: string }>) => {
-    const { open, setOpen } = useContext(DropDownContext);
-
-    let alignmentClasses = 'origin-top';
-
-    if (align === 'left') {
-        alignmentClasses = 'origin-top-left left-0';
-    } else if (align === 'right') {
-        alignmentClasses = 'origin-top-right right-0';
-    }
-
-    let widthClasses = '';
-
-    if (width === '48') {
-        widthClasses = 'w-48';
-    }
-
-    return (
-        <>
-            <Transition
-                as={Fragment}
-                show={open}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-            >
-                <div
-                    className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}
-                    onClick={() => setOpen(false)}
-                >
-                    <div className={`rounded-md ring-1 ring-black ring-opacity-5 ` + contentClasses}>{children}</div>
-                </div>
-            </Transition>
-        </>
-    );
-};
-
-const DropdownLink = ({ className = '', children, ...props }: InertiaLinkProps) => {
-    return (
-        <Link
-            {...props}
-            className={
-                'block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out ' +
-                className
-            }
-        >
-            {children}
-        </Link>
-    );
-};
-
-Dropdown.Trigger = Trigger;
-Dropdown.Content = Content;
-Dropdown.Link = DropdownLink;
-
-export default Dropdown;
+		);
+	}
+}

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Game;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -16,4 +17,12 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+	public function test_query_where_return_null(): void
+	{
+		$game = Game::query()->where("name","=","kfhfv")
+			->first();
+
+		$this->assertNull($game);
+	}
 }

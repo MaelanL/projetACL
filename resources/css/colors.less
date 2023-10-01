@@ -1,0 +1,144 @@
+@background-lightest: #FFFFFF;
+@background-lighter: #FAFAFA;
+@background: #F4F4F4;
+@background-darker: #ECECEC;
+@background-darkest: #E3E3E3;
+
+@foreground-lightest: #777793;
+@foreground-lighter: #3E3E5C;
+@foreground: #000033;
+
+@foreground-gray: #B8B8CE;
+
+@blue-lighter: #5C80F3;
+@blue: #446DFF;
+@blue-darker: #2C52D9;
+@blue-background: lighten(@blue, 45%, relative);
+@pale-blue-background: lighten(@blue, 53%, relative);
+
+@red: #CC2929;
+@red-darker: darken(@red, 10%, relative);
+@red-background: lighten(@red, 80%, relative);
+@red-background-lighter: lighten(@red-background, 5%, relative);
+@pale-red-background: lighten(@red, 90%, relative);
+
+@orange: #F19000;
+@orange-darker: darken(@orange, 5%, relative);
+@orange-background: lighten(@orange, 55%, relative);
+@orange-background-lighter: lighten(@orange-background, 5%, relative);
+@pale-orange-background: lighten(@orange, 90%, relative);
+
+@yellow: #F3C510;
+@yellow-darker: darken(@yellow, 10%, relative);
+@yellow-background: lighten(@yellow, 55%, relative);
+@pale-yellow-background: lighten(@yellow, 75%, relative);
+
+@green: #47B347;
+@green-darker: darken(@green, 10%, relative);
+@green-background: lighten(@green, 75%, relative);
+@green-background-lighter: lighten(@green-background, 5%, relative);
+@green-darker-background: lighten(@green-darker, 75%, relative);
+@pale-green-background: lighten(@green, 85%, relative);
+
+@gray: @foreground-gray;
+@gray-darker: darken(@gray, 10%, relative);
+@gray-background: lighten(@gray, 75%, relative);
+@gray-background-lighter: lighten(@gray-background, 5%, relative);
+@gray-darker-background: lighten(@gray-darker, 75%, relative);
+
+@brown: #A95846;
+@brown-darker: #8C432F;
+@brown-background: lighten(@brown, 95%, relative);
+
+@dullbrown: #604947;
+@dullbrown-darker: #4E3837;
+@dullbrown-background: lighten(@dullbrown, 140%, relative);
+
+@purple: #422397;
+@purple-darker: #31147B;
+@purple-background: lighten(@purple, 150%, relative);
+@purple-background-lighter: lighten(@purple-background, 5%, relative);
+@purple-darker-background: lighten(@purple-darker, 160%, relative);
+
+@pink: #E532B8;
+@pink-darker: #B81B91;
+@pink-background: lighten(@pink, 65%, relative);
+@pink-background-lighter: lighten(@pink-background, 5%, relative);
+
+@cyan: #40D0EC;
+@cyan-darker: #24ABC4;
+@cyan-background: lighten(@cyan, 55%, relative);
+
+@turquoise: #44CFBB;
+@turquoise-darker: darken(@turquoise, 7.5%);
+
+@bottle-green: #096A09;
+
+@primary-lighter: @blue-lighter;
+@primary: @blue;
+@primary-darker: @blue-darker;
+@primary-background: @blue-background;
+@pale-primary-background: @pale-blue-background;
+@primary-background-lighter: lighten(@primary-background, 5%, relative);
+
+@primary-variant: @turquoise;
+@primary-variant-darker: @turquoise-darker;
+
+@secondary: #EC602E;
+@secondary-darker: #C54A1D;
+@secondary-variant: @yellow;
+@secondary-background: lighten(@secondary, 67.5%, relative);
+
+@dead: @purple;
+@dead-background: @purple-background;
+@insolvent: @brown;
+@insolvent-background: @brown-background;
+
+@suspended: @cyan;
+@suspended-background: @cyan-background;
+@closed: @brown;
+@closed-background: @brown-background;
+
+@late: @red;
+@late-background: @red-background;
+@todo: @orange;
+@todo-background: @orange-background;
+@executed: @green;
+@executed-background: @green-background;
+@failed: @red;
+@failed-background: fade(@pale-red-background, 50%);
+@future: @foreground-lightest;
+@cancelled: @foreground-lightest;
+@cancelled-background: @background-darker;
+
+@running: @orange;
+@checking: @orange;
+@finished: @green;
+
+@increase: @green;
+@stagnation: @yellow;
+@decrease: @orange;
+@none: @blue;
+@never: @foreground-gray;
+
+/*
+ *  GRADIENTS
+ */
+
+@primary-gradient: linear-gradient(280deg, @primary 10%, @primary-variant 110%);
+@primary-gradient-landing: linear-gradient(240deg, @primary 10%, @primary-variant-darker 110%);
+@dark-primary-gradient: linear-gradient(280deg, @primary-darker 10%, @primary 110%);
+@secondary-gradient: linear-gradient(280deg, @secondary 10%, @secondary-variant 110%);
+
+@red-gradient: linear-gradient(280deg, darken(@red, 15%, relative), lighten(@red, 15%, relative));
+@orange-gradient: linear-gradient(280deg, darken(@orange, 7.5%, relative), lighten(@orange, 15%, relative));
+@green-gradient: linear-gradient(280deg, darken(@green, 15%, relative), lighten(@green, 15%, relative));
+
+@brown-gradient: linear-gradient(280deg, darken(@brown, 15%, relative), lighten(@brown, 15%, relative));
+@purple-gradient: linear-gradient(280deg, darken(@purple, 15%, relative), lighten(@purple, 15%, relative));
+@cyan-gradient: linear-gradient(280deg, darken(@cyan, 15%, relative), lighten(@cyan, 15%, relative));
+
+@gray-gradient: linear-gradient(280deg, darken(@foreground-gray, 20%, relative), darken(@foreground-gray, 5%, relative));
+
+@running-gradient: @orange-gradient;
+@finished-gradient: @green-gradient;

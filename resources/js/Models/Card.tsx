@@ -19,6 +19,10 @@ class Card
 
 	constructor()
 	{
+		this.id = 0;
+		this.color = '';
+		this.type = '';
+		this.value = '';
 	}
 
 }
