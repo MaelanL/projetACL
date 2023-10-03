@@ -25,6 +25,11 @@ class Card
 		this.value = '';
 	}
 
+
+	public getImageUrl(): string
+	{
+		return this.value+"_"+this.type+".png";
+	}
 }
 
 export default Card;

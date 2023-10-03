@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {useStateContext} from "@/Contexts/ContextProvider";
 import axios from "axios";
 import Game from "@/Models/Game";
-import GameSelection from "@/Pages/Game/Component/GameSelection";
+import GameSelection from "@/Pages/Games/Component/GameSelection";
+import GameController from "@/Controllers/GameController";
 
 
 function Home()
@@ -14,10 +15,9 @@ function Home()
 
 	useEffect(() => {
 		// Effectue la requête API au chargement du composant
-		axios.get<Game[]>("api/games").then((response) => {
-			setGames(response.data);
-			console.log(response.data);
-		});
+		GameController.getGames().then((games) =>{
+			setGames(games);
+		})
 	}, []);
 
 	return (

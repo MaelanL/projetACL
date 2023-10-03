@@ -20,12 +20,16 @@ use Inertia\Inertia;
 
 
 Route::get('/jeu', function () {
-    return Inertia::render('Game/Jeu');
+    return Inertia::render('Games/Jeu');
 })->name("jeu.app");
 
 Route::get('/solitaire', function () {
-	return Inertia::render('Game/Jeu');
+	return Inertia::render('Games/Jeu');
 })->name("solitaire.app");
+
+Route::get('/pseudo', function () {
+	return Inertia::render('Games/Component/PseudoSelection');
+})->name("pseudo");
 
 Route::get('/', function () {
 	return Inertia::render('Home');
