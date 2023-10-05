@@ -50,10 +50,9 @@ function Jeu ()
 
 			{cards.map((card: Card) => (
             <ul key={card.id}>
-				 <img src={card.getImageUrl()}/>
+				 			<img src={card.getImageUrl()}/>
             </ul>
           ))}
-
 		</div>
 	);
 };

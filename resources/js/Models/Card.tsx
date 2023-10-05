@@ -49,7 +49,6 @@ class Card
 
 	getImageUrl(): string
 	{
-		console.log(this.value+"_"+this.type+".png");
 		return "img/cards/"+this.value+"_"+this.type+".png";
 	}
 }
