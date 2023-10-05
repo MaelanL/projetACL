@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * 
  */
 
-class jeu_history extends Model
+class JeuHistory extends Model
 {
     use HasFactory;
 
