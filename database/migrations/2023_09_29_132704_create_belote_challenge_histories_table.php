@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jeu_histories', function (Blueprint $table) {
+        Schema::create('belote_challenge_histories', function (Blueprint $table) {
             $table->id();
-            $table->timestamp("played_at");
+            $table->timestamp("played_at")
+							->useCurrent();
             $table->integer("score");
-            $table->boolean("finished");
+            $table->boolean("finished")
+							->default(false);
 
             $table->unsignedBigInteger("player_id");
             $table->unsignedBigInteger("game_id");
 
 
             $table->foreign("player_id")
-                ->references("id")->on("player");
+                ->references("id")->on("players");
 
             $table->foreign("game_id")
                 ->references("id")->on("games");
-
         });
     }
 
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jeu_histories');
+        Schema::dropIfExists('belote_challenge_histories');
     }
 };

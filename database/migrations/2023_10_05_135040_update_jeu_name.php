@@ -11,19 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('players', function (Blueprint $table) {
-            $table->id();
-            $table->string("pseudo");
-        });
+			\DB::table('games')
+				->where("name","=","Jeu")
+				->update(
+					[
+						"name" => "Belote Challenge",
+					]);
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('players');
-
+			\DB::table('games')
+				->where("name","=","Belote Challenge")
+				->update(
+					[
+						"name" => "Jeu",
+					]);
     }
 };

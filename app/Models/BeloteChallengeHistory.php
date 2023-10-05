@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,14 +15,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $finished - Indique si la partie à été abandonnée ou non.
  * @property int $player_id - Identifiant du joueur.
  * @property int $game_id - Identifiant du jeu.
- * 
+ *
  */
 
-class JeuHistory extends Model
+class BeloteChallengeHistory extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $table = "jeu_histories";
+	protected $table = "belote_challenge_histories";
 	protected $primaryKey = "id";
 	public $incrementing = true;
 	protected $keyType = "integer";
