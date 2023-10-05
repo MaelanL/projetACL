@@ -7,7 +7,5 @@ use Illuminate\Http\Request;
 use App\Models\*;
 
 public abstract class ExpertCard {
-
-
     abstract public function compare($card1, $card2);
 }
