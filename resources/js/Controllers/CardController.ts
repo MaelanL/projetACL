@@ -1,14 +1,16 @@
 import axios from "axios";
-import Card from "@/Models/Card";
+import Card, {RawCard} from "@/Models/Card";
 
 export default class CardController
 {
 
 	public static async getCards(gameName: string): Promise<Card[]> {
 		let cards: Card[] = [];
-		await	axios.get<Card[]>(`api/cards/${gameName}`)
+		await	axios.get<RawCard[]>(`api/cards/${gameName}`)
 			.then((response) => {
-				cards = response.data;
+				response.data.forEach((rawCard) =>{
+					cards.push(new Card().parse(rawCard));
+				})
 			});
 			return cards;
 	}

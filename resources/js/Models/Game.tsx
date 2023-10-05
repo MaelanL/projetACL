@@ -1,6 +1,13 @@
 import * as React from 'react';
 
 
+export interface RawGame
+{
+	id: number;
+	name: string;
+	description: string;
+}
+
 /**
  * Classe représentant un jeu.
  */
@@ -20,7 +27,17 @@ class Game
 		this.description = '';
 	}
 
+	public parse(rawGame: RawGame): Game
+	{
+		if(rawGame.id)
+			this.id = rawGame.id;
+		if(rawGame.description)
+			this.description = rawGame.description;
+		if(rawGame.name)
+			this.name = rawGame.name;
 
+		return this;
+	}
 
 }
 

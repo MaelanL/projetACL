@@ -1,5 +1,13 @@
  import * as React from 'react';
 
+export interface RawCard
+{
+	id: number;
+	color: string;
+	type: string;
+	value: string;
+}
+
 
 /**
  * Classe représentant une carte.
@@ -25,10 +33,24 @@ class Card
 		this.value = '';
 	}
 
-
-	public getImageUrl(): string
+	public parse(rawCard: RawCard): Card
 	{
-		return this.value+"_"+this.type+".png";
+		if(rawCard.type)
+			this.type = rawCard.type;
+		if(rawCard.id)
+			this.id = rawCard.id;
+		if(rawCard.color)
+			this.color = rawCard.color;
+		if(rawCard.value)
+			this.value = rawCard.value;
+
+		return this;
+	}
+
+	getImageUrl(): string
+	{
+		console.log(this.value+"_"+this.type+".png");
+		return "img/cards/"+this.value+"_"+this.type+".png";
 	}
 }
 

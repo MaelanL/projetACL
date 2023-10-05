@@ -16,6 +16,7 @@ function Jeu ()
 	useEffect(() => {
 		CardController.getCards(JEU).then((cards) =>{
 			setCards(cards);
+			console.log(cards);
 		})
 	}, []);
 
@@ -46,6 +47,13 @@ function Jeu ()
 			<button
 				onClick={() => {test()}}
 			>Test</button>
+
+			{cards.map((card: Card) => (
+            <ul key={card.id}>
+				 <img src={card.getImageUrl()}/>
+            </ul>
+          ))}
+
 		</div>
 	);
 };
