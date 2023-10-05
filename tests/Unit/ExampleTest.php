@@ -13,7 +13,6 @@ class ExampleTest extends TestCase
      public function AjoutPointsDifferent(): void
    {
         $card = new Card();
-        $card->value
        $this->assertTrue(true);
    }
 
