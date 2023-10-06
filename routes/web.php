@@ -20,11 +20,11 @@ use Inertia\Inertia;
 
 
 Route::get('/jeu', function () {
-    return Inertia::render('Games/Jeu');
-})->name("jeu.app");
+    return Inertia::render('Games/BeloteChallenge');
+})->name("BeloteChallenge.app");
 
 Route::get('/solitaire', function () {
-	return Inertia::render('Games/Jeu');
+	return Inertia::render('Games/BeloteChallenge');
 })->name("solitaire.app");
 
 Route::get('/pseudo', function () {

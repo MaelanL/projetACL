@@ -2,10 +2,10 @@ import {useStateContext} from "@/Contexts/ContextProvider";
 import React, {useEffect, useState} from "react";
 import {Link} from "@inertiajs/react";
 import Card from "@/Models/Card";
-import  {JEU} from "@/Models/Game";
+import {BELOTE_CHALLENGE} from "@/Models/Game";
 import CardController from "@/Controllers/CardController";
 
-function Jeu ()
+function BeloteChallenge ()
 {
 	const [cards, setCards] = useState<Card[]>([]);
 	const { userPseudo, setUserPseudo } = useStateContext();
@@ -14,9 +14,8 @@ function Jeu ()
 
 
 	useEffect(() => {
-		CardController.getCards(JEU).then((cards) =>{
+		CardController.getCards(BELOTE_CHALLENGE).then((cards) =>{
 			setCards(cards);
-			console.log(cards);
 		})
 	}, []);
 
@@ -57,5 +56,5 @@ function Jeu ()
 	);
 };
 
-export default Jeu;
+export default BeloteChallenge;
 

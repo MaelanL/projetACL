@@ -41,7 +41,7 @@ class Game
 
 }
 
-export const JEU: string = "jeu";
+export const BELOTE_CHALLENGE: string = "Belote Challenge";
 
 export default Game;
 

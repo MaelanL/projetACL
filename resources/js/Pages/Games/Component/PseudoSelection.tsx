@@ -22,7 +22,7 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 
 	if(gameSelected == null)
 		window.location.href = "/";
-	
+
 	else
 
 	return (
@@ -41,7 +41,7 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 				/>
 
 			<Link className={"button"}
-				href={route(`${gameSelected}.app`)}
+				href={route(`${gameSelected.replace(" ","")}.app`)}
 				onClick={() => setUserPseudo(pseudo)
 				}
 			>
