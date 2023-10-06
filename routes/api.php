@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('cards/{gameName}', 'App\Http\Controllers\CardsController@getCards');
 
 Route::post("test/{card1}/{card2}",'App\Http\Controllers\CardsController@test');
+Route::post("beloteChallengeCalculRoundScore/{card1}/{card2}",'App\Http\Controllers\BeloteChallengeController@calculRoundScore');
+
 
 Route::get('games', 'App\Http\Controllers\GameController@get');
 

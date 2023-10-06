@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Card extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	protected $table = "cards";
 	protected $primaryKey = "id";
@@ -27,8 +27,8 @@ class Card extends Model
 	protected $keyType = "integer";
 	public $timestamps = false;
 
-    public function cards_games_links(): HasMany
-    {
-        return $this->hasMany(CardsGamesLink::class);
-    }
+	public function cards_games_links(): HasMany
+	{
+		return $this->hasMany(CardsGamesLink::class);
+	}
 }

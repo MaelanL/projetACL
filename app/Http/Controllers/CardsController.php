@@ -18,7 +18,6 @@ class CardsController extends Controller
 	 */
 	public function getCards(string $game_name)
 	{
-		file_put_contents("test.txt",$game_name);
 		/**
 		 * @var $game Game
 		 */

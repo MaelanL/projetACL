@@ -7,7 +7,7 @@ class TestCOR extends TestCase
 	function test(): void
 	{
 
-		$expert = \App\Processing\COR\InitializeCOR::Jeu();
+		$expert = \App\Processing\COR\InitializeCOR::beloteChallenge();
 
 		$card1 = new \App\Models\Card();
 		$card1->type = "spades";

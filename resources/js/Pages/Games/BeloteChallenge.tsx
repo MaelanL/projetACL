@@ -4,6 +4,7 @@ import {Link} from "@inertiajs/react";
 import Card from "@/Models/Card";
 import {BELOTE_CHALLENGE} from "@/Models/Game";
 import CardController from "@/Controllers/CardController";
+import BeloteChallengeController from "@/Controllers/BeloteChallengeController";
 
 function BeloteChallenge ()
 {
@@ -27,8 +28,9 @@ function BeloteChallenge ()
 	};
 
 	const test = (): void => {
-		CardController.calculJeuRoundScore(cards[0],cards[1]).then((score) =>
+		BeloteChallengeController.calculJeuRoundScore(cards[0],cards[1]).then((score) =>
 			{
+				console.log((cards[0].getImageUrl())+" "+cards[1].getImageUrl())
 				console.log(score);
 			})
 	};

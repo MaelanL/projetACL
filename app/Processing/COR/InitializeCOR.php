@@ -9,7 +9,7 @@ use App\Processing\COR\Jeu\ExpertSameValueSameColorComparer;
 
 class InitializeCOR
 {
-	public static function Jeu(): ExpertCard
+	public static function beloteChallenge(): ExpertCard
 	{
 		$expert = null;
 

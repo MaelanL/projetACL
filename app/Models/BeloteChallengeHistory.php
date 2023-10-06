@@ -27,4 +27,7 @@ class BeloteChallengeHistory extends Model
 	public $incrementing = true;
 	protected $keyType = "integer";
 	public $timestamps = false;
+
+
+
 }
