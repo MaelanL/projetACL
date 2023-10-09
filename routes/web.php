@@ -24,6 +24,13 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+Route::get('/home', function () {
+    return Inertia::render('Home');
+})->name('home');
+
+Route::get('/score', function () {
+    return Inertia::render('Score');
+})->name('score');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
