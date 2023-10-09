@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-"{\"id\":12,\"value\":\"ace\",\"color\":\"red\",\"type\":\"diamonds\",\"points\":11} {\"id\":5,\"value\":\"10\",\"color\":\"red\",\"type\":\"hearts\",\"points\":10}"
-=======
-<<<<<<< HEAD
-"{\"id\":22,\"value\":\"queen\",\"color\":\"red\",\"type\":\"hearts\",\"points\":3} {\"id\":20,\"value\":\"2\",\"color\":\"black\",\"type\":\"clubs\",\"points\":null}"
-=======
-"{\"id\":15,\"value\":\"2\",\"color\":\"black\",\"type\":\"spades\",\"points\":null} {\"id\":25,\"value\":\"10\",\"color\":\"red\",\"type\":\"hearts\",\"points\":10}"
->>>>>>> beb826848f558c7dcf9fb81d24a8761ec7905e43
->>>>>>> c65e70b3c8fc43daa7bdd31f55a8d06b5432da69

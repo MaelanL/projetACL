@@ -14,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post("test/{card1}/{card2}",'App\Http\Controllers\CardsController@test');
 
 // Retourne les cartes d'un jeu.
 Route::get('cards/{gameName}', 'App\Http\Controllers\CardsController@getCards');
 
-Route::post("test/{card1}/{card2}",'App\Http\Controllers\CardsController@test');
+
+
 Route::post("beloteChallengeCalculRoundScore/{card1}/{card2}",'App\Http\Controllers\BeloteChallengeController@calculRoundScore');
+Route::post("beloteChallengeStartGame/{pseudo}",'App\Http\Controllers\BeloteChallengeController@startGame');
+
+
+Route::post("savePlayer/{pseudo}",'App\Http\Controllers\PlayerController@savePlayer');
 
 
 Route::get('games', 'App\Http\Controllers\GameController@get');

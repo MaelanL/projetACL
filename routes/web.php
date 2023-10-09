@@ -19,7 +19,7 @@ use Inertia\Inertia;
 
 
 
-Route::get('/jeu', function () {
+Route::get('/belotechallenge', function () {
     return Inertia::render('Games/BeloteChallenge');
 })->name("BeloteChallenge.app");
 

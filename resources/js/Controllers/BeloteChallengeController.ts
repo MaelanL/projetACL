@@ -1,5 +1,6 @@
 import Card from "@/Models/Card";
 import axios from "axios";
+import BeloteChallengeGame from "@/Models/BeloteChallengeGame";
 
 
 export default class BeloteChallengeController
@@ -13,6 +14,16 @@ export default class BeloteChallengeController
 				score = response.data;
 			});
 		return score;
+	}
+
+	public static async startGame(pseudo: string): Promise<BeloteChallengeGame>
+	{
+		let beloteChallengeGame: BeloteChallengeGame = new BeloteChallengeGame();
+		await axios.post<BeloteChallengeGame>(`api/beloteChallengeStartGame/${pseudo}`, [pseudo])
+			.then((response) => {
+				beloteChallengeGame = beloteChallengeGame.parse(response.data);
+			});
+		return beloteChallengeGame;
 	}
 
 }

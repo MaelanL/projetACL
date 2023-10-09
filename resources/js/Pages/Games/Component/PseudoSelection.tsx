@@ -3,6 +3,9 @@ import Game from "@/Models/Game";
 import {Link} from "@inertiajs/react";
 import {Dropdown} from "@/Components/Dropdown";
 import {useStateContext} from "@/Contexts/ContextProvider";
+import PlayerController from "@/Controllers/PlayerController";
+import {Simulate} from "react-dom/test-utils";
+import submit = Simulate.submit;
 
 interface PseudoSelectionProps
 {
@@ -15,10 +18,10 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 	const { gameSelected } = useStateContext();
 	const [pseudo, setPseudo] = useState("");
 
-	const onSubmit = (ev: React.FormEvent<HTMLFormElement>): void => {
-		ev.preventDefault();
+	const submit = (): void => {
 		setUserPseudo(pseudo);
-		};
+		PlayerController.savePlayer(pseudo);
+	};
 
 	if(gameSelected == null)
 		window.location.href = "/";
@@ -30,7 +33,7 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 		<div className={"pseudo-selection"}>
 			<h2>{gameSelected}</h2>
 
-			<form onSubmit={onSubmit} className="mt-8 space-y-6" action="#" method="POST">
+			<form className="mt-8 space-y-6" action="#" method="POST">
 				<input
 					id="pseudo"
 					name="pseudo"
@@ -42,7 +45,7 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 
 			<Link className={"button"}
 				href={route(`${gameSelected.replace(" ","")}.app`)}
-				onClick={() => setUserPseudo(pseudo)
+				onClick={() =>{submit()}
 				}
 			>
 				<i className="ri-play-line"></i>Jouer

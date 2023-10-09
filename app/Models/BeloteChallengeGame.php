@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Classe représentant l'historique de jeu.
@@ -18,16 +19,23 @@ use Illuminate\Database\Eloquent\Model;
  *
  */
 
-class BeloteChallengeHistory extends Model
+class BeloteChallengeGame extends Model
 {
 	use HasFactory;
 
-	protected $table = "belote_challenge_histories";
+	protected $table = "belote_challenge_games";
 	protected $primaryKey = "id";
 	public $incrementing = true;
 	protected $keyType = "integer";
 	public $timestamps = false;
 
+	const BELOTE_CHALLENGE = "Belote Challenge";
+
+
+	public function rounds(): HasMany
+	{
+		return $this->hasMany(BeloteChallengeRound::class);
+	}
 
 
 }

@@ -5,27 +5,34 @@ import Card from "@/Models/Card";
 import {BELOTE_CHALLENGE} from "@/Models/Game";
 import CardController from "@/Controllers/CardController";
 import BeloteChallengeController from "@/Controllers/BeloteChallengeController";
+import BeloteChallengeGame from "@/Models/BeloteChallengeGame";
 
 function BeloteChallenge ()
 {
-	const [cards, setCards] = useState<Card[]>([]);
 	const { userPseudo, setUserPseudo } = useStateContext();
-	const [pseudo, setPseudo] = useState("");
+
+	const [card1, setCard1] = useState<Card|undefined>(undefined);
+	const [card2, setCard2] = useState<Card|undefined>(undefined);
+	const [cards, setCards] = useState<Card[]>([]);
+	const [beloteChallengeGame, setBeloteChallengeGame] = useState<BeloteChallengeGame|null>(null);
 
 
 
 	useEffect(() => {
+
+		if(userPseudo === null)
+			window.location.href = "/";
+
 		CardController.getCards(BELOTE_CHALLENGE).then((cards) =>{
 			setCards(cards);
+		});
+
+		BeloteChallengeController.startGame(userPseudo).then((beloteChallengeGame) =>{
+			setBeloteChallengeGame(beloteChallengeGame);
 		})
 	}, []);
 
-	const onSubmit = (ev: React.FormEvent<HTMLFormElement>): void => {
-		ev.preventDefault();
-		console.log("submit");
-		setUserPseudo(pseudo);
-		console.log(userPseudo);
-	};
+
 
 	const test = (): void => {
 		BeloteChallengeController.calculJeuRoundScore(cards[0],cards[1]).then((score) =>
@@ -34,6 +41,19 @@ function BeloteChallenge ()
 				console.log(score);
 			})
 	};
+
+	const retrieve = (): void =>
+	{
+		const newCards = [...cards];
+		const retrievedCard1 = newCards.pop();
+		const retrievedCard2 = newCards.pop();
+
+		setCards(newCards);
+		setCard1(retrievedCard1);
+		setCard2(retrievedCard2);
+
+		console.log(JSON.stringify(card1)+" "+JSON.stringify(card2));
+	}
 
 	return (
 		<div>
@@ -46,7 +66,7 @@ function BeloteChallenge ()
 			</Link>
 
 			<button
-				onClick={() => {test()}}
+				onClick={() => {retrieve()}}
 			>Test</button>
 
 			{cards.map((card: Card) => (

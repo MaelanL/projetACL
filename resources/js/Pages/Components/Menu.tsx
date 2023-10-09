@@ -1,7 +1,7 @@
 import {Link} from "@inertiajs/react";
 
 
-export default function Header()
+export default function Menu()
 {
 
 

@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import {ContextProvider} from "@/Contexts/ContextProvider";
-import Header from "@/Pages/Components/Header";
+import Menu from "@/Pages/Components/Menu";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Projet ACL';
 
@@ -17,7 +17,7 @@ createInertiaApp({
 
         root.render(
 				<ContextProvider>
-					<Header />
+					<Menu />
 					<App {...props} />
 				</ContextProvider>
 				);
