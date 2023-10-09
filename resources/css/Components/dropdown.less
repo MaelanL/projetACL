@@ -1,0 +1,50 @@
+.dropdown
+{ // Style d'un composant dépliant.
+	position: relative;
+	display: block;
+	left: 0;
+	right: 0;
+
+	margin: 0.5em auto;
+	padding: 1em;
+	border-radius: 1em;
+	background: @background-lighter;
+	box-shadow: 0 0 0.33em 0 rgba(0, 0, 0, 0.05);
+
+	min-height: 2em;
+
+	button.collapse-dropdown
+	{
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 0.5em;
+		padding: 0;
+
+		background: @green-darker;
+
+		z-index: 2;
+	}
+
+	button.show-content
+	{
+		display: block;
+		margin: auto;
+
+		.icon
+		{
+			margin: 0;
+			font-size: 1.2em;
+		}
+	}
+}
+
+.dropdown, .dropdown .dropdown-content
+{ // Animation du dépliant et de son contenu.
+	transform-origin: top center;
+	transition: transform 0.2s ease, opacity 0.15s ease;
+	animation: open-dropdown-animation 0.2s;
+}

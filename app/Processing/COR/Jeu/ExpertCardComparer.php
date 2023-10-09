@@ -5,13 +5,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-use App\Models\*;
 
 
-abstract class ExpertCardComparer extends ExpertCard {
+abstract class ExpertCardComparer extends ExpertCard
+{
 
-    private ExpertCardComparer $suivant;
 
+
+	private ExpertCardComparer|null $suivant;
+
+
+	public function __construct(ExpertCardComparer|null $expertCardComparer)
+	{
+		$this->suivant = $expertCardComparer;
+	}
 
     public function ExpertCardComparer(ExpertCardComparer $expertSuivant)
     {

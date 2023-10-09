@@ -1,0 +1,151 @@
+a.button, button
+{
+	transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+
+	display: inline-block;
+	margin: 0;
+	padding: 0.66em 1em;
+	border-radius: 0.33em;
+	box-sizing: border-box;
+
+	box-shadow: 0 0.25em 0.33em 0 rgba(0, 0, 0, 0.25);
+	border: none;
+	outline: none;
+	background: @green-gradient, @green;
+	color: @background;
+
+	font-size: 1.0em;
+	font-weight: 500;
+	text-align: left;
+	line-height: 1.4;
+
+	cursor: pointer;
+
+	&:hover
+	{ box-shadow: 0 0 0.33em 0 rgba(0, 0, 0, 0.2); }
+
+	&[disabled]
+	{ // Affichage du bouton lorsqu'il est désactivé.
+		filter: grayscale(66%);
+		opacity: 75%;
+	}
+
+	.icon
+	{ margin-right: 0.25em; }
+
+	&.icon-only
+	{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
+
+		//TODO margin à retirer après retrait du bottom: 0.1em; de .icon.
+		.icon { margin: 0 0 -0.15em 0; font-size: 1.2em; }
+	}
+
+	&.flat
+	{
+		transition: border 0.2s ease, box-shadow 0.2s ease;
+
+		box-shadow: 0 0 0 0 @primary-background;
+		background: @background-lightest;
+		border: solid @background-darkest 1px;
+		color: @foreground-lighter;
+
+		.icon { transition: color 0.2s ease; }
+
+		&:hover, &.active
+		{
+			box-shadow: 0 0 0 2px @primary-background;
+			border-color: @primary;
+			.icon { color: @primary; }
+		}
+
+		&.green
+		{
+			background: @background-lightest;
+			.icon { color: @green; }
+
+			&:hover, &.active
+			{
+				box-shadow: 0 0 0 2px @green-background;
+				border-color: @green;
+			}
+		}
+		&.red, &.remove, &.delete
+		{
+			background: @background-lightest;
+			.icon { color: @red; }
+
+			&:hover, &.active
+			{
+				box-shadow: 0 0 0 2px @red-background;
+				border-color: @red;
+			}
+		}
+		&.orange
+		{
+			background: @background-lightest;
+			.icon { color: @orange; }
+
+			&:hover, &.active
+			{
+				box-shadow: 0 0 0 2px @orange-background;
+				border-color: @orange;
+			}
+		}
+	}
+
+	&.glow
+	{
+		box-shadow: 0 0 0 0 transparent;
+
+		background: @pale-primary-background;
+		color: @primary;
+
+		&:hover { background: @primary-background; }
+
+		&.green
+		{ background: @pale-green-background; color: @green; &:hover { background: @green-background; } }
+		&.red, &.remove, &.delete
+		{ background: @pale-red-background; color: @red; &:hover { background: @red-background; } }
+		&.orange
+		{ background: @pale-orange-background; color: @orange; &:hover { background: @orange-background; } }
+	}
+
+	&.green
+	{ background: @green-gradient, @green; }
+	&.red, &.remove, &.delete
+	{ background: @red-gradient, @red; }
+	&.orange
+	{ background: @orange-gradient, @orange; }
+
+	&.center
+	{
+		display: block;
+		margin: auto;
+		width: 20em;
+		text-align: center;
+
+		&.margin { margin: 1em auto; }
+	}
+
+	&.toggle
+	{ // Fonctionnalité des boutons cochés / décochés.
+		&:not(.on) > .on { display: none; } // On masque le contenu "bouton coché" lorsque le bouton n'est pas coché.
+		&.on > .off { display: none; } // On masque le contenu "bouton non coché" lorsque le bouton est coché.
+	}
+}
+
+
+.buttons
+{ // Styles d'un groupe de boutons.
+	text-align: center;
+
+	> .button, > button, > span
+	{
+		display: inline-block;
+		margin: auto 0.33em;
+	}
+}

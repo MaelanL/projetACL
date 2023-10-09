@@ -38,7 +38,6 @@ class CardsController extends Controller
 
 	public function test(Card $card1, Card $card2): int
 	{
-		file_put_contents("test",json_encode($card1." ".$card2,128));
 		return $card1->points+$card2->points;
 	}
 }

@@ -32,19 +32,23 @@ Route::get('/score', function () {
     return Inertia::render('Score');
 })->name('score');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+
+
+Route::get('/belotechallenge', function () {
+    return Inertia::render('Games/BeloteChallenge');
+})->name("BeloteChallenge.app");
+
+Route::get('/solitaire', function () {
+	return Inertia::render('Games/BeloteChallenge');
+})->name("solitaire.app");
 
 Route::get('/pseudo', function () {
-    return Inertia::render('PseudoApp');
-})->name("pseudoapp");
+	return Inertia::render('Games/Component/PseudoSelection');
+})->name("pseudo");
 
+Route::get('/', function () {
+	return Inertia::render('Home');
+})->name("home");
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';
