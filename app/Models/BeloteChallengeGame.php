@@ -5,7 +5,11 @@ namespace App\Models;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< Updated upstream:app/Models/BeloteChallengeGame.php
 use Illuminate\Database\Eloquent\Relations\HasMany;
+=======
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+>>>>>>> Stashed changes:app/Models/BeloteChallengeHistory.php
 
 /**
  * Classe représentant l'historique de jeu.
@@ -37,5 +41,15 @@ class BeloteChallengeGame extends Model
 		return $this->hasMany(BeloteChallengeRound::class);
 	}
 
+  public function player(): BelongsTo
+  {
+      return $this->belongsTo(Player::class);
+  }
+
+
+  public function game(): BelongsTo
+  {
+      return $this->belongsTo(Game::class);
+  }
 
 }

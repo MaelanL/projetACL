@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 /**
  * Classe représentant un jeu de l'application.
@@ -23,6 +25,9 @@ class Game extends Model
     protected $keyType = "integer";
     public $timestamps = false;
 
-
+	public function belote_challenge_game(): HasOne
+	{
+		return $this->hasOne(BeloteChallengeGame::class);
+	}
 
 }
