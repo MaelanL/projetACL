@@ -4,16 +4,11 @@ use PHPUnit\Framework\TestCase;
 
 class TestCOR extends TestCase
 {
-<<<<<<< HEAD
-	function test(): void
-	{
 
-		$expert = \App\Processing\COR\InitializeCOR::beloteChallenge();
-=======
 	function test_mismatched_card(): void
 	{
 
-		$expert = \App\Processing\COR\InitializeCOR::Jeu();
+		$expert = \App\Processing\COR\InitializeCOR::beloteChallenge();
 
 		$card1 = new \App\Models\Card();
 		$card1->type = "spades";
@@ -34,8 +29,7 @@ class TestCOR extends TestCase
 	function test_mismatched_color(): void
 	{
 
-		$expert = \App\Processing\COR\InitializeCOR::Jeu();
->>>>>>> 85e0986ea81bb1d5225fcdd45ffb5a014662618f
+		$expert = \App\Processing\COR\InitializeCOR::beloteChallenge();
 
 		$card1 = new \App\Models\Card();
 		$card1->type = "spades";
@@ -53,12 +47,10 @@ class TestCOR extends TestCase
 		$expected = -6;
 		$this->assertEquals($score,$expected);
 	}
-<<<<<<< HEAD
-=======
 	function test_matched_card(): void
 	{
 
-		$expert = \App\Processing\COR\InitializeCOR::Jeu();
+		$expert = \App\Processing\COR\InitializeCOR::beloteChallenge();
 
 		$card1 = new \App\Models\Card();
 		$card1->type = "spades";
@@ -76,5 +68,4 @@ class TestCOR extends TestCase
 		$expected = -12;
 		$this->assertEquals($score,$expected);
 	}
->>>>>>> 85e0986ea81bb1d5225fcdd45ffb5a014662618f
 }
