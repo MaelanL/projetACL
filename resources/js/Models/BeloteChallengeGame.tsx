@@ -52,6 +52,7 @@ class BeloteChallengeGame
 		return this;
 	}
 
+
 }
 
 export default BeloteChallengeGame;

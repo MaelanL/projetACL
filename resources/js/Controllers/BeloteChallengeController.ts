@@ -1,6 +1,8 @@
-import Card from "@/Models/Card";
+import Card, {RawCard} from "@/Models/Card";
 import axios from "axios";
 import BeloteChallengeGame from "@/Models/BeloteChallengeGame";
+import Game from "@/Models/Game";
+import game from "@/Models/Game";
 
 
 export default class BeloteChallengeController
@@ -25,5 +27,6 @@ export default class BeloteChallengeController
 			});
 		return beloteChallengeGame;
 	}
+
 
 }

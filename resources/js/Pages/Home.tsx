@@ -3,6 +3,7 @@ import {useStateContext} from "@/Contexts/ContextProvider";
 import axios from "axios";
 import Game from "@/Models/Game";
 import GameSelection from "@/Pages/Games/Component/GameSelection";
+import {Link} from "@inertiajs/react";
 
 
 function Home()
@@ -21,14 +22,18 @@ function Home()
 	}, []);
 
 	return (
-		<div className={"home"}>
+		<>
+			<div className={"home"}>
 
-			<div className={"games"}>
-				{games.map((game, index) => (
-					<GameSelection key={index} game={game}/>
-				))}
+				<div className={"games"}>
+					{games.map((game, index) => (
+						<GameSelection key={index} game={game}/>
+					))}
+				</div>
+
 			</div>
-		</div>
+
+		</>
 	);
 };
 

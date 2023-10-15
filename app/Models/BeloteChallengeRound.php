@@ -1,4 +1,4 @@
-git a<?php
+<?php
 
 namespace App\Models;
 

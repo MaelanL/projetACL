@@ -44,5 +44,10 @@ class BeloteChallengeController extends Controller
 		return $expert->compare($card1,$card2);
 	}
 
+	public function get(): \Illuminate\Database\Eloquent\Collection
+	{
+		$query = BeloteChallengeGame::query();
+		$query->orderBy('score', 'desc'); // Ajoute un tri par score décroissant	}
+		return $query;
 
 }
