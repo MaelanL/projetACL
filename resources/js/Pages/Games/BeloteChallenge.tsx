@@ -66,20 +66,23 @@ function BeloteChallenge() {
           <div className="round">Round: {roundNumber}</div>
         )}
       </div>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-        <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-          {card1 && <img src={card1.getImageUrl()} alt="Card 1" />}
-          <div className="game-container">
-            <div className="card" style={{ backgroundImage: `url("/img/cards/back.png")` }}>
-              <button className="piocher-button" onClick={retrieve}>
-                Piocher
-              </button>
+      <div className="background-container">
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+          <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+            {card1 && <img src={card1.getImageUrl()} alt="Card 1" />}
+            <div className="game-container">
+              <div className="card">
+                <img src="/img/cards/back.png" alt="Back Card" />
+                <button className="piocher-button" onClick={retrieve}>
+                  Piocher
+                </button>
+              </div>
             </div>
+            {card2 && <img src={card2.getImageUrl()} alt="Card 2" />}
           </div>
-          {card2 && <img src={card2.getImageUrl()} alt="Card 2" />}
         </div>
       </div>
-    </div>
+			</div>
   );
 }
 
