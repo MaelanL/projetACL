@@ -16,7 +16,7 @@ function BeloteChallenge() {
   const [beloteChallengeGame, setBeloteChallengeGame] = useState<BeloteChallengeGame | null>(null);
   const [score, setScore] = useState<number | null>(null);
   const [roundNumber, setRoundNumber] = useState<number>(0);
-  const [gameId, setGameId] = useState<number>(0);
+  const [picksRemaining, setPicksRemaining] = useState<number>(5); // Nombre de piochages restants
 
   useEffect(() => {
     if (userPseudo === null) window.location.href = "/";
@@ -31,59 +31,52 @@ function BeloteChallenge() {
   }, []);
 
   const test = (): void => {
-    BeloteChallengeController.calculJeuRoundScore(cards[0], cards[1], roundNumber, gameId).then((score) => {
-      setScore(score);
-    });
+    if (picksRemaining > 0) {
+      BeloteChallengeController.calculJeuRoundScore(cards[0], cards[1]).then((newScore) => {
+        setScore(newScore);
+        setPicksRemaining(picksRemaining - 1); // Réduire le nombre de piochages restants
+        setRoundNumber(roundNumber + 1); // Incrémenter le numéro de round
+      });
+    }
   };
 
   const retrieve = (): void => {
-    const newCards = [...cards];
-    const retrievedCard1 = newCards.pop();
-    const retrievedCard2 = newCards.pop();
+    if (picksRemaining > 0) {
+      const newCards = [...cards];
+      const retrievedCard1 = newCards.pop();
+      const retrievedCard2 = newCards.pop();
 
-    setCards(newCards);
-    setCard1(retrievedCard1);
-    setCard2(retrievedCard2);
-
-    console.log(JSON.stringify(card1) + " " + JSON.stringify(card2));
+      setCards(newCards);
+      setCard1(retrievedCard1);
+      setCard2(retrievedCard2);
+      setPicksRemaining(picksRemaining - 1); // Réduire le nombre de piochages restants
+      setRoundNumber(roundNumber + 1); // Incrémenter le numéro de round
+    }
   };
 
   return (
-    <div>
-      <Link
-        href={route("home")}
-        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-      >
-        Home
-      </Link>
-      <button onClick={() => retrieve()}>Test</button>
-
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        {score !== null && (
-          <div className="score">Score: {score}</div>
-        )}
-        {roundNumber !== null && (
-          <div className="round">Round: {roundNumber}</div>
-        )}
+    <div className="background-container">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "100px" }}>
+        <div className="score-round">Round: {roundNumber}</div>
+        <div className="score-round">Score: {score}</div>
       </div>
-      <div className="background-container">
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-          <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-            {card1 && <img src={card1.getImageUrl()} alt="Card 1" />}
-            <div className="game-container">
-              <div className="card">
-                <img src="/img/cards/back.png" alt="Back Card" />
-                <button className="piocher-button" onClick={retrieve}>
-                  Piocher
-                </button>
-              </div>
-            </div>
-            {card2 && <img src={card2.getImageUrl()} alt="Card 2" />}
+      <div className="game-container">
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+          {card1 && <img src={card1.getImageUrl()} alt="Card 1" />}
+          <div className="card">
+            <img src="/img/cards/back.png" alt="Back Card" />
+            <button className="piocher-button" onClick={retrieve} disabled={picksRemaining <= 0}>
+              Piocher
+            </button>
           </div>
+          {card2 && <img src={card2.getImageUrl()} alt="Card 2" />}
         </div>
       </div>
-			</div>
+    </div>
   );
 }
 
 export default BeloteChallenge;
+
+
+
