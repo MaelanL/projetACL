@@ -30,7 +30,7 @@ function BeloteChallenge() {
     });
   }, []);
 
-  const test = (): void => {
+  const calculRoundScore = (): void => {
     if (picksRemaining > 0) {
       BeloteChallengeController.calculJeuRoundScore(cards[0], cards[1]).then((newScore) => {
         setScore(newScore);
@@ -54,18 +54,23 @@ function BeloteChallenge() {
     }
   };
 
+  const handlePiocherClick = (): void => {
+  	retrieve();
+    calculRoundScore();
+  };
+
   return (
     <div className="background-container">
       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "100px" }}>
         <div className="score-round">Round: {roundNumber}</div>
-        <div className="score-round">Score: {score}</div>
+        <div className="score-round">Score: {score !== null ? score : 0}</div>
       </div>
       <div className="game-container">
         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
           {card1 && <img src={card1.getImageUrl()} alt="Card 1" />}
           <div className="card">
             <img src="/img/cards/back.png" alt="Back Card" />
-            <button className="piocher-button" onClick={retrieve} disabled={picksRemaining <= 0}>
+            <button className="piocher-button" onClick={handlePiocherClick} disabled={picksRemaining <= 0}>
               Piocher
             </button>
           </div>
