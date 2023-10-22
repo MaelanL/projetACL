@@ -30,10 +30,7 @@
   text-align: center; /* Centrer le texte horizontalement */
 }
 
-.score {
-  font-size:79px; /* Ajustez la taille de la police */
-  margin-top: 10px; /* Ajustez l'espacement par rapport aux cartes */
-}
+
 
 .background-container {
   background-image: url('/img/Background.png');
@@ -42,7 +39,11 @@
   background-attachment: fixed;
 }
 
-.score-round {
+
+.score_and_round {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
   font-size: 50px; /* Ajustez la taille de la police */
   margin-top: 0px; /* Ajustez l'espacement par rapport aux cartes */
   margin-left: 100px; /* Ajustez la marge de gauche */

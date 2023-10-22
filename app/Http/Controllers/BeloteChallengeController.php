@@ -43,7 +43,7 @@ class BeloteChallengeController extends Controller
 
 		return $expert->compare($card1,$card2);
 	}*/
-	public function calculRoundScore(Card $card1, Card $card2): int
+	public function calculRoundScore(Card $card1, Card $card2,int $roundNumber, int $gameId): int
   {
       $expert = InitializeCOR::beloteChallenge();
 
