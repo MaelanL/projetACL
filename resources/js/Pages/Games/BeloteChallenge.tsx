@@ -45,8 +45,8 @@ function BeloteChallenge() {
 
       if (retrievedCard1 && retrievedCard2) {
       	//calculJeuRoundScore  a 4 paramètres : card1, card2, roundNumber et l'id de la partie
-        const score = await BeloteChallengeController.calculJeuRoundScore(retrievedCard1, retrievedCard2, roundNumber, BeloteChallengeGame?.id);
-        setScore(prevScore => prevScore + score);
+        const roundScore = await BeloteChallengeController.calculJeuRoundScore(retrievedCard1, retrievedCard2, roundNumber, beloteChallengeGame.id);
+        setScore(score+roundScore);
       }
     }
   };
