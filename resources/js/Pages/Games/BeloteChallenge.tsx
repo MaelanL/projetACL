@@ -40,8 +40,12 @@ function BeloteChallenge() {
       setCard2(retrievedCard2);
       setRoundNumber(roundNumber + 1);
 
+			console.log('BeloteChallengeGame:', BeloteChallengeGame);
+      console.log('roundNumber:', roundNumber);
+
       if (retrievedCard1 && retrievedCard2) {
-        const score = await BeloteChallengeController.calculJeuRoundScore(retrievedCard1, retrievedCard2, roundNumber, beloteChallengeGame.id);
+      	//calculJeuRoundScore  a 4 paramètres : card1, card2, roundNumber et l'id de la partie
+        const score = await BeloteChallengeController.calculJeuRoundScore(retrievedCard1, retrievedCard2, roundNumber, BeloteChallengeGame?.id);
         setScore(prevScore => prevScore + score);
       }
     }
