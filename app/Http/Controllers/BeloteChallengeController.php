@@ -50,12 +50,8 @@ class BeloteChallengeController extends Controller
 		$round->save();
 	}
 
-	public function saveGame(int $gameId): void
+	public function saveGame(BeloteChallengeGame $beloteChallengeGame): void
 	{
-		/**
-		 * @var BeloteChallengeGame $beloteChallengeGame
-		 */
-		$beloteChallengeGame = BeloteChallengeGame::find($gameId);
 		$beloteChallengeGame->finished = true;
 		$beloteChallengeGame->save();
 	}
@@ -68,10 +64,17 @@ class BeloteChallengeController extends Controller
       // Utilisez $roundNumber et $gameId pour effectuer le calcul du score
       $score = $expert->compare($card1, $card2);
 
+
 			$this->saveRound($card1,$card2,$roundNumber,$gameId,$score);
+			/**
+		 	* @var BeloteChallengeGame $beloteChallengeGame
+		 	*/
+			$beloteChallengeGame = BeloteChallengeGame::find($gameId);
+			$beloteChallengeGame->score += $score;
+			$beloteChallengeGame->save();
 
 			if($roundNumber == BeloteChallengeGame::NB_ROUNDS)
-				$this->saveGame($gameId);
+				$this->saveGame($beloteChallengeGame);
 
 			return $score;
   }
