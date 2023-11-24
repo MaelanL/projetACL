@@ -21,7 +21,7 @@ Route::get('cards/{gameName}', 'App\Http\Controllers\CardsController@getCards');
 Route::get('/cards/{gameName}', 'App\Http\Controllers\ScoreController@getScore');
 
 
-Route::post("beloteChallengeCalculRoundScore/{card1}/{card2}",'App\Http\Controllers\BeloteChallengeController@calculRoundScore');
+Route::post("beloteChallengeCalculRoundScore/{card1}/{card2}/{roundNumber}/{gameId}",'App\Http\Controllers\BeloteChallengeController@calculRoundScore');
 Route::post("beloteChallengeStartGame/{pseudo}",'App\Http\Controllers\BeloteChallengeController@startGame');
 
 

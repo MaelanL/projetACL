@@ -23,8 +23,8 @@ class Player extends Model
 	protected $keyType = "integer";
 	public $timestamps = false;
 
-  public function belote_challenge_game(): HasMany
-  {
+  public function belote_challenge_game(): \Illuminate\Database\Eloquent\Relations\HasMany
+	{
       return $this->hasMany(BeloteChallengeGame::class);
   }
 

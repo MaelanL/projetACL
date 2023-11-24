@@ -37,18 +37,20 @@ class BeloteChallengeController extends Controller
 		return $beloteChallengeGame;
 	}
 
-	public function calculRoundScore(Card $card1, Card $card2): int
-	{
-		$expert = InitializeCOR::beloteChallenge();
+	public function calculRoundScore(Card $card1, Card $card2,int $roundNumber, int $gameId): int
+  {
+      $expert = InitializeCOR::beloteChallenge();
 
-		return $expert->compare($card1,$card2);
-	}
-
-	public function get(): \Illuminate\Database\Eloquent\Collection
+	
+      // Utilisez $roundNumber et $gameId pour effectuer le calcul du score
+      return $expert->compare($card1, $card2);
+  }
+  public function get(): \Illuminate\Database\Eloquent\Collection
 	{
 		return BeloteChallengeGame::with('player')
 			->orderBy('score')
 			->take(10)
 			->get();
 	}
+
 }

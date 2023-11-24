@@ -31,7 +31,7 @@ abstract class ExpertCardComparer extends ExpertCard
         // cet expert tente de résoudre le problème
         $suivant = $this->compare1($card1, $card2);
 
-        if ($suivant != null)		// réussite de l’expert
+        if ($suivant !== null)		// réussite de l’expert
             return $suivant;
         else            			// échec de l’expert
             // le problème est transmis à l’expert suivant

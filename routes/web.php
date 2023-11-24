@@ -46,6 +46,10 @@ Route::get('/pseudo', function () {
 	return Inertia::render('Games/Component/PseudoSelection');
 })->name("pseudo");
 
+Route::get('/game', function () {
+	return Inertia::render('Games/Component/GameSelection');
+})->name("game");
+
 Route::get('/', function () {
 	return Inertia::render('Home');
 })->name("home");

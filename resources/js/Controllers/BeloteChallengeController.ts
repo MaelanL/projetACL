@@ -8,11 +8,11 @@ import game from "@/Models/Game";
 export default class BeloteChallengeController
 {
 
-	public static async calculJeuRoundScore(card1: Card, card2: Card): Promise<number>
+	public static async calculJeuRoundScore(card1: Card, card2: Card, roundNumber: number, gameId: number): Promise<number>
 	{
 		let score: number = 0;
-		await axios.post<number>(`api/beloteChallengeCalculRoundScore/${card1.id}/${card2.id}`, [card1,card2])
-			.then((response) => {
+		await axios.post<number>(`api/beloteChallengeCalculRoundScore/${card1.id}/${card2.id}/${roundNumber}/${gameId}`,[card1,card2,roundNumber,gameId])
+		.then((response) => {
 				score = response.data;
 			});
 		return score;
