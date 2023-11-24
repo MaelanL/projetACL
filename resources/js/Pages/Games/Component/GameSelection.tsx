@@ -25,9 +25,9 @@ function GameSelection({ game }: GameSelectionProps)
 			>
 				<i className="ri-play-line"></i>Jouer
 			</Link>
-			{/*<Link href={route(`${game.name}.record`)}>*/}
-			{/*	Tableau des records*/}
-			{/*</Link>*/}
+			<Link className={"button"} href={route(`${game.name.replace(" ","")}.record`)}>
+				Tableau des records
+			</Link>
 			<Dropdown
 				collapsedContent={<p>{game.description}</p>}
 			/>

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $id - Identifiant de l'historique.
  * @property timestamp $played_at - Date de la partie.
- * @property int $score - Score de la partie.
+ * @property int $score - BeloteChallengeScore de la partie.
  * @property boolean $finished - Indique si la partie à été abandonnée ou non.
  * @property int $player_id - Identifiant du joueur.
  * @property int $game_id - Identifiant du jeu.

@@ -28,12 +28,12 @@ Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::get('/score', function () {
-    return Inertia::render('Score');
-})->name('score');
-
-
-
+Route::get('/BeloteChallenge/record', function () {
+    return Inertia::render('Games/BeloteChallenge/BeloteChallengeScore');
+})->name('BeloteChallenge.record');
+Route::get('/Solitaire/record', function () {
+	return Inertia::render('Games/BeloteChallenge/BeloteChallengeScore');
+})->name('solitaire.record');
 Route::get('/belotechallenge', function () {
     return Inertia::render('Games/BeloteChallenge');
 })->name("BeloteChallenge.app");
