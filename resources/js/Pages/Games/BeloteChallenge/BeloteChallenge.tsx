@@ -42,13 +42,6 @@ function BeloteChallenge() {
     if (userPseudo === null) window.location.href = "/";
 
 		startGame();
-    // CardController.getCards(BELOTE_CHALLENGE).then((cards) => {
-    //   setCards(cards);
-    // });
-		//
-    // BeloteChallengeController.startGame(userPseudo).then((beloteChallengeGame) => {
-    //   setBeloteChallengeGame(beloteChallengeGame);
-    // });
   }, []);
 
   const handlePiocherClick = async (): Promise<void> => {
