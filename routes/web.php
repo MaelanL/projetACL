@@ -35,11 +35,11 @@ Route::get('/Solitaire/record', function () {
 	return Inertia::render('Games/BeloteChallenge/BeloteChallengeScore');
 })->name('solitaire.record');
 Route::get('/belotechallenge', function () {
-    return Inertia::render('Games/BeloteChallenge');
+    return Inertia::render('Games/BeloteChallenge/BeloteChallenge');
 })->name("BeloteChallenge.app");
 
 Route::get('/solitaire', function () {
-	return Inertia::render('Games/BeloteChallenge');
+	return Inertia::render('Games/BeloteChallenge/BeloteChallenge');
 })->name("solitaire.app");
 
 Route::get('/pseudo', function () {
