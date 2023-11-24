@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Player, {RawPlayer} from "@/Models/Player";
 
 export interface RawBeloteChallengeGame
 {
@@ -6,8 +7,8 @@ export interface RawBeloteChallengeGame
 	played_at: Date;
 	score: number;
 	finished: boolean;
-	player_id: number;
 	game_id: number;
+	player ?: RawPlayer;
 }
 
 
@@ -20,9 +21,8 @@ class BeloteChallengeGame
 	played_at: Date;
 	score: number;
 	finished: boolean;
-	player_id: number;
 	game_id: number;
-
+	player ?: Player;
 
 	constructor()
 	{
@@ -30,8 +30,8 @@ class BeloteChallengeGame
 		this.played_at = new Date();
 		this.score = 0;
 		this.finished = false;
-		this.player_id = 0;
 		this.game_id = 0;
+		this.player = undefined;
 	}
 
 	public parse(rawBeloteChallengeGame: RawBeloteChallengeGame): BeloteChallengeGame
@@ -44,10 +44,10 @@ class BeloteChallengeGame
 			this.score = rawBeloteChallengeGame.score;
 		if(rawBeloteChallengeGame.finished)
 			this.finished = rawBeloteChallengeGame.finished;
-		if(rawBeloteChallengeGame.player_id)
-			this.player_id = rawBeloteChallengeGame.player_id;
 		if(rawBeloteChallengeGame.game_id)
 			this.game_id = rawBeloteChallengeGame.game_id;
+		if(rawBeloteChallengeGame.player)
+			this.player?.parse(rawBeloteChallengeGame.player);
 
 		return this;
 	}

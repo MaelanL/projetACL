@@ -48,6 +48,7 @@ function Score()
 		// Effectue la requête API au chargement du composant
 		axios.get<BeloteChallengeGame[]>("api/getBeloteChalenge").then((response) => {
 			setScore(response.data)
+			console.log(response.data)
 		});
 	}, []);
 	return (
@@ -60,14 +61,15 @@ function Score()
 						<td>Rang</td>
 						<td>Date</td>
 						<td>Score</td>
-						<td>Player ID</td>
+						<td>Player</td>
 					</tr>
+
 					{score.map((score, index) => (
 						<tr key={index}>
 							<td>{index+1}</td>
 							<td>{score.played_at.toString()}</td>
 							<td>{score.score}</td>
-							<td>{score.player_id}</td>
+							<td>{score.player?.pseudo}</td>
 						</tr>
 
 					))}

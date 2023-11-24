@@ -46,8 +46,9 @@ class BeloteChallengeController extends Controller
 
 	public function get(): \Illuminate\Database\Eloquent\Collection
 	{
-		$query = BeloteChallengeGame::query();
-		$query->orderBy('score', 'desc'); // Ajoute un tri par score décroissant	}
-		return $query;
-
+		return BeloteChallengeGame::with('player')
+			->orderBy('score')
+			->take(10)
+			->get();
+	}
 }
