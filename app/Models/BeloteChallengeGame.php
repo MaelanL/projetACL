@@ -32,6 +32,8 @@ class BeloteChallengeGame extends Model
 
 	const BELOTE_CHALLENGE = "Belote Challenge";
 
+	const NB_ROUNDS = 5;
+
 
 	public function rounds(): HasMany
 	{
