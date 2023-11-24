@@ -17,19 +17,41 @@ function BeloteChallenge() {
   const [score, setScore] = useState<number>(0);
   const [roundNumber, setRoundNumber] = useState<number>(0);
 
+	const startGame= (reset :boolean = false): void => {
+
+		if (reset)
+		{
+			setRoundNumber(0);
+			setScore(0);
+			setCard1(undefined);
+			setCard2(undefined);
+		}
+
+		CardController.getCards(BELOTE_CHALLENGE).then((cards) => {
+			setCards(cards);
+		});
+
+		BeloteChallengeController.startGame(userPseudo).then((beloteChallengeGame) => {
+			setBeloteChallengeGame(beloteChallengeGame);
+		});
+	}
+
+
+
   useEffect(() => {
     if (userPseudo === null) window.location.href = "/";
 
-    CardController.getCards(BELOTE_CHALLENGE).then((cards) => {
-      setCards(cards);
-    });
-
-    BeloteChallengeController.startGame(userPseudo).then((beloteChallengeGame) => {
-      setBeloteChallengeGame(beloteChallengeGame);
-    });
+		startGame();
+    // CardController.getCards(BELOTE_CHALLENGE).then((cards) => {
+    //   setCards(cards);
+    // });
+		//
+    // BeloteChallengeController.startGame(userPseudo).then((beloteChallengeGame) => {
+    //   setBeloteChallengeGame(beloteChallengeGame);
+    // });
   }, []);
 
-  const handlePiocherClick = async (): void => {
+  const handlePiocherClick = async (): Promise<void> => {
     if (roundNumber < 5) {
       const newCards = [...cards];
       const retrievedCard1 = newCards.pop();
@@ -68,6 +90,22 @@ function BeloteChallenge() {
           </div>
           {card2 && <img src={card2.getImageUrl()} alt="Card 2" />}
         </div>
+
+				{roundNumber >= 5 &&
+					<div>
+						<button onClick={() => {
+							startGame(true)
+						}}>
+							Rejouer
+						</button>
+
+						<Link className={"button"}
+									href={route(`home`)}
+						>
+							<i className="ri-play-line"></i>Quitter
+						</Link>
+					</div>
+				}
       </div>
     </div>
   );
