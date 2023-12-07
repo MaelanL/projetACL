@@ -53,6 +53,9 @@ Route::get('/game', function () {
 Route::get('/', function () {
 	return Inertia::render('Home');
 })->name("home");
+Route::get('/', function () {
+	return Inertia::render('Home');
+})->name("stat");
 
 
 require __DIR__.'/auth.php';
