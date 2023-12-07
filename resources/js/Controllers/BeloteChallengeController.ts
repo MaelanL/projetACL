@@ -28,5 +28,16 @@ export default class BeloteChallengeController
 		return beloteChallengeGame;
 	}
 
+	public static async getRecords(): Promise<BeloteChallengeGame[]>
+	{
+		let records: BeloteChallengeGame[] = [];
+		await axios.get<BeloteChallengeGame[]>(`/api/getBeloteChallengeRecords/`).then((response) => {
+			response.data.forEach((game) => {
+				records.push(game);
+			});
+		});
+		return records;
+	}
+
 
 }

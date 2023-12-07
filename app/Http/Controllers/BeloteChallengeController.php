@@ -64,7 +64,6 @@ class BeloteChallengeController extends Controller
       // Utilisez $roundNumber et $gameId pour effectuer le calcul du score
       $score = $expert->compare($card1, $card2);
 
-
 			$this->saveRound($card1,$card2,$roundNumber,$gameId,$score);
 			/**
 		 	* @var BeloteChallengeGame $beloteChallengeGame
@@ -78,7 +77,8 @@ class BeloteChallengeController extends Controller
 
 			return $score;
   }
-  public function get(): \Illuminate\Database\Eloquent\Collection
+
+  public function getRecords(): \Illuminate\Database\Eloquent\Collection
 	{
 		return BeloteChallengeGame::with('player')
 			->orderBy('score')
@@ -86,5 +86,6 @@ class BeloteChallengeController extends Controller
 			->where("finished","=",true)
 			->get();
 	}
+
 
 }

@@ -27,7 +27,7 @@ Route::post("beloteChallengeStartGame/{pseudo}",'App\Http\Controllers\BeloteChal
 Route::post("savePlayer/{pseudo}",'App\Http\Controllers\PlayerController@savePlayer');
 
 
-Route::get('getBeloteChalenge', 'App\Http\Controllers\BeloteChallengeController@get');
+Route::get('getBeloteChallengeRecords', 'App\Http\Controllers\BeloteChallengeController@getRecords');
 
 Route::get('games', 'App\Http\Controllers\GameController@get');
 
