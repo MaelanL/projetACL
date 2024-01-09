@@ -24,6 +24,8 @@ class BeloteChallengeGame
 	game_id: number;
 	player ?: Player;
 
+	static ROUND_NUMBER = 5;
+
 	constructor()
 	{
 		this.id = 0;

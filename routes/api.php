@@ -29,6 +29,11 @@ Route::post("savePlayer/{pseudo}",'App\Http\Controllers\PlayerController@savePla
 
 Route::get('getBeloteChallengeRecords', 'App\Http\Controllers\BeloteChallengeController@getRecords');
 
+Route::get("getBeloteChallengeGamesNumber/{player}/{finished}", 'App\Http\Controllers\BeloteChallengeStatisticsController@getGamesNumber');
+Route::get("getBeloteChallengeMediumScorePerRound/{round}/{player}", 'App\Http\Controllers\BeloteChallengeStatisticsController@getMediumScorePerRound');
+Route::get("getBeloteChallengeAllMediumScorePerRound/{player}", 'App\Http\Controllers\BeloteChallengeStatisticsController@getAllMediumScorePerRound');
+Route::get("getBeloteChallengeMediumScore/{player}", 'App\Http\Controllers\BeloteChallengeStatisticsController@getMediumScore');
+
 Route::get('games', 'App\Http\Controllers\GameController@get');
 
 

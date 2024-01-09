@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $player_id - Identifiant du joueur.
  * @property int $game_id - Identifiant du jeu.
  *
+ * @property BeloteChallengeRound[] $rounds;
+ *
  */
 
 class BeloteChallengeGame extends Model
@@ -37,7 +39,7 @@ class BeloteChallengeGame extends Model
 
 	public function rounds(): HasMany
 	{
-		return $this->hasMany(BeloteChallengeRound::class);
+		return $this->hasMany(BeloteChallengeRound::class,"belote_challenge_id","id");
 	}
 
   public function player(): BelongsTo

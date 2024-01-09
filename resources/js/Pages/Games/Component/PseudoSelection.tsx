@@ -6,6 +6,7 @@ import {useStateContext} from "@/Contexts/ContextProvider";
 import PlayerController from "@/Controllers/PlayerController";
 import {Simulate} from "react-dom/test-utils";
 import submit = Simulate.submit;
+import Home from "@/Pages/Home";
 
 interface PseudoSelectionProps
 {
@@ -23,12 +24,11 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 		PlayerController.savePlayer(pseudo);
 	};
 
-	if(gameSelected == null)
-		window.location.href = "/";
 
-	else
+	return gameSelected === null ? <Home/>
+	:
 
-	return (
+	(
 
 		<div className={"pseudo-selection"}>
 			<h2>{gameSelected}</h2>
@@ -50,12 +50,6 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 			>
 				<i className="ri-play-line"></i>Jouer
 			</Link>
-				<button
-					type="submit"
-				>
-					Valider
-				</button>
-				<p>User Pseudo: {userPseudo}</p>
 			</form>
 		</div>
 	);

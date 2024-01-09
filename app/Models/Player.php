@@ -29,5 +29,13 @@ class Player extends Model
   }
 
 
+	public static function getPlayerByPseudo(string $pseudo): \Illuminate\Database\Eloquent\Builder|Model|Player|null
+	{
+		return Player::query()
+			->where("pseudo","=",$pseudo)
+			->first();
+	}
+
+
 
 }

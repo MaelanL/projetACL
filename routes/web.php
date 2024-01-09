@@ -28,6 +28,10 @@ Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
 
+Route::get('/statistics', function () {
+	return Inertia::render('Statistics/Statistics');
+})->name('statistics');
+
 Route::get('/BeloteChallenge/record', function () {
     return Inertia::render('Games/BeloteChallenge/BeloteChallengeScore');
 })->name('BeloteChallenge.record');
@@ -53,6 +57,15 @@ Route::get('/game', function () {
 Route::get('/', function () {
 	return Inertia::render('Home');
 })->name("home");
+
+
+Route::get('/BeloteChallenge/stats', function () {
+	return Inertia::render('Statistics/Games/BeloteChallengeStatistics');
+})->name('BeloteChallenge.stats');
+
+Route::get('/Solitaire/stats', function () {
+	return Inertia::render('Statistics/Games/BeloteChallengeStatistics');
+})->name('solitaire.stats');
 
 
 require __DIR__.'/auth.php';

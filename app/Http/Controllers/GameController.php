@@ -10,6 +10,7 @@ class GameController extends Controller
 {
 	public function get(): \Illuminate\Database\Eloquent\Collection
 	{
-		return Game::all();
+		return Game::query()->where("display","=",true)
+			->get();
 	}
 }

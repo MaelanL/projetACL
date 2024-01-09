@@ -3,8 +3,9 @@
 .game-container {
   display: flex;
   justify-content: center;
+	flex-direction: column;
   align-items: center;
-  height: 100vh;
+  //height: 100vh;
 }
 
 .card {
@@ -30,7 +31,18 @@
   text-align: center; /* Centrer le texte horizontalement */
 }
 
+.cards
+{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 1em;
 
+	.card
+	{
+		margin-left: 0.5em;
+	}
+}
 
 .background-container {
   //background-image: url('/img/Background.png');
@@ -45,6 +57,16 @@
 	flex-direction: column;
 	align-items: flex-start;
   font-size: 50px; /* Ajustez la taille de la police */
-  margin-top: 0px; /* Ajustez l'espacement par rapport aux cartes */
   margin-left: 100px; /* Ajustez la marge de gauche */
+}
+
+.game-end
+{
+	display: flex;
+	flex-direction: column;
+
+	.button
+	{
+		margin-top: 0.5em;
+	}
 }

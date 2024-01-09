@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {createContext, useContext, useState, ReactNode, useEffect, useLayoutEffect} from "react";
+import BeloteChallengeGame from "@/Models/BeloteChallengeGame";
 
 interface StateContextProps {
 	userPseudo: string | null;
@@ -24,10 +25,35 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) =>
 	const [userPseudo, setUserPseudo] = useState<string | null>(null);
 	const [gameSelected, setGameSelected] = useState<string | null>(null);
 
+	// useEffect(() => {
+	// 	console.log("useeffect")
+	// 	const data = window.localStorage.getItem('STORE_PSEUDO');
+	// 	if ( data !== null ) {
+	// 		console.log(userPseudo)
+	// 		setUserPseudo(data)
+	// 		console.log(data)
+	// 	}
+	// }, []);
+
+	useLayoutEffect(() => {
+		console.log("useeffect")
+		const data = window.localStorage.getItem('STORE_PSEUDO');
+		if ( data !== null ) {
+			console.log(userPseudo)
+			setUserPseudo(data)
+			console.log(data)
+		}
+	}, []);
+
+	const getPseudo= () => {
+		return window.localStorage.getItem('STORE_PSEUDO');
+	}
+
 	const contextValue: StateContextProps = {
 		userPseudo,
 		setUserPseudo: (pseudo: string) => {
 			setUserPseudo(pseudo);
+			window.localStorage.setItem('STORE_PSEUDO',pseudo);
 		},
 
 		gameSelected,
@@ -36,6 +62,7 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) =>
 		},
 
 	};
+
 
 	return (
 		<StateContext.Provider value={contextValue}>

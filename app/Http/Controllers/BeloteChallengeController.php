@@ -87,5 +87,4 @@ class BeloteChallengeController extends Controller
 			->get();
 	}
 
-
 }

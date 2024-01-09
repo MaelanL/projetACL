@@ -17,7 +17,6 @@ function Home()
 		// Effectue la requête API au chargement du composant
 		axios.get<Game[]>("api/games").then((response) => {
 			setGames(response.data);
-			console.log(response.data);
 		});
 	}, []);
 
