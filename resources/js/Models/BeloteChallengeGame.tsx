@@ -18,12 +18,18 @@ export interface RawBeloteChallengeGame
 class BeloteChallengeGame
 {
 	id: number;
+	// Date à laquelle la partie a été jouée.
 	played_at: Date;
+	// Le score de la partie.
 	score: number;
+	// Vrai si la partie est finie, faux sinon.
 	finished: boolean;
+	// L'identifiant de la partie.
 	game_id: number;
+	// Le joueur.
 	player ?: Player;
 
+	// Le nombre de manches d'une partie.
 	static ROUND_NUMBER = 5;
 
 	constructor()

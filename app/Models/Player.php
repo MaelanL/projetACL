@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property int $id - Identifiant du joueur.
  * @property string $pseudo - Pseudo du joueur.
+ *
+ * @property BeloteChallengeGame[] $belote_challenge_game - Les parties de belote challenge du joueur.
+ *
  */
 
 class Player extends Model

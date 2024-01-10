@@ -12,6 +12,11 @@ use App\Processing\COR\InitializeCOR;
 class BeloteChallengeController extends Controller
 {
 
+	/**
+	 * Lance une partie de belote challenge.
+	 * @param string $pseudo - Le pseudo du joueur lançant la partie.
+	 * @return BeloteChallengeGame
+	 */
 	public function startGame(string $pseudo): BeloteChallengeGame
 	{
 		/**
@@ -38,6 +43,15 @@ class BeloteChallengeController extends Controller
 	}
 
 
+	/**
+	 * Sauvegarde le score d'un round.
+	 * @param Card $card1 - La 1ere carte piochée.
+	 * @param Card $card2 - La 2ème carte piochée.
+	 * @param int $roundNumber - Le numero de manche.
+	 * @param int $gameId - L'identifant de la partie.
+	 * @param int $score - Le score de la manche.
+	 * @return void
+	 */
 	public function saveRound(Card $card1, Card $card2,int $roundNumber, int $gameId, int $score)
 	{
 		$round = new BeloteChallengeRound();
@@ -50,12 +64,25 @@ class BeloteChallengeController extends Controller
 		$round->save();
 	}
 
+	/**
+	 * Sauvegarde une partie.
+	 * @param BeloteChallengeGame $beloteChallengeGame - La partie à sauvegarder.
+	 * @return void
+	 */
 	public function saveGame(BeloteChallengeGame $beloteChallengeGame): void
 	{
 		$beloteChallengeGame->finished = true;
 		$beloteChallengeGame->save();
 	}
 
+	/**
+	 * Calcul le score d'une manche.
+	 * @param Card $card1 - La 1ere carte piochée.
+	 * @param Card $card2 - La 2ème carte piochée.
+	 * @param int $roundNumber - Le numéro de la manche.
+	 * @param int $gameId - L'identifiant de la partie.
+	 * @return int
+	 */
 	public function calculRoundScore(Card $card1, Card $card2,int $roundNumber, int $gameId): int
   {
       $expert = InitializeCOR::beloteChallenge();
@@ -78,6 +105,10 @@ class BeloteChallengeController extends Controller
 			return $score;
   }
 
+	/**
+	 * Retourne les 10 meilleures parties.
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
   public function getRecords(): \Illuminate\Database\Eloquent\Collection
 	{
 		return BeloteChallengeGame::with('player')

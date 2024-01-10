@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
- * Classe représentant un round d'une partie de belote challenge.
+ * Classe représentant une manche d'une partie de belote challenge.
  *
- * @property int $id -.
- * @property int $round -.
- * @property int $score -.
- * @property int $belote_challenge_id -.
- * @property int $card_1_id -.
- * @property int $card_2_id -.
+ * @property int $id - L'identifiant.
+ * @property int $round - Le numero de la manche.
+ * @property int $score - Le score de la manche.
+ * @property int $belote_challenge_id - L'identifiant de la partie.
+ * @property int $card_1_id - L'identifiant de la 1ere carte piochée.
+ * @property int $card_2_id - L'identifiant de la 2eme carte piochée.
+ *
+ * @property BeloteChallengeGame $belote_challenge - La partie de Belote challenge;
+ * @property Card $card_1 - La 1ere carte piochée;
+ * @property Card $card_2 - La 2ème carte piochée;
  *
  */
 class BeloteChallengeRound extends Model

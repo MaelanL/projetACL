@@ -3,15 +3,11 @@ import {useStateContext} from "@/Contexts/ContextProvider";
 import axios from "axios";
 import Game from "@/Models/Game";
 import GameSelection from "@/Pages/Games/Component/GameSelection";
-import {Link} from "@inertiajs/react";
-
 
 function Home()
 {
 	const { userPseudo } = useStateContext();
 	const [games, setGames] = useState<Game[]>([]);
-
-
 
 	useEffect(() => {
 		// Effectue la requête API au chargement du composant

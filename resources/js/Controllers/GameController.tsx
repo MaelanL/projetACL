@@ -4,6 +4,9 @@ import axios from "axios";
 export default class GameController
 {
 
+	/**
+	 * Retourne les jeux.
+	 */
 	public static async getGames(): Promise<Game[]>
 	{
 		let games : Game[] = [];

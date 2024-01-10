@@ -6,6 +6,11 @@ use App\Models\Player;
 
 class PlayerController extends Controller
 {
+	/**
+	 * Sauvegarde un joueur (s'il nexiste pas déjà).
+	 * @param string $pseudo - Le pseudo du joueur.
+	 * @return void
+	 */
 	public function savePlayer(string $pseudo): void
 	{
 		/**

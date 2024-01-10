@@ -7,8 +7,16 @@ use App\Models\Player;
 
 class BeloteChallengeStatisticsController extends Controller
 {
+	// Le nombre de décimal à afficher.
 	public const DECIMAL = 2;
 
+
+	/**
+	 * Retourne le nombre de parties.
+	 * @param string|null $pseudo - Si non null retourne les parties de ce joueur.
+	 * @param bool $finished - Vrai si on sélectionne les parties finies, faux sinon.
+	 * @return int - Le nombre de parties.
+	 */
 	public function getGamesNumber(string|null $pseudo, bool $finished)
 	{
 		if($pseudo != "null")
@@ -26,10 +34,13 @@ class BeloteChallengeStatisticsController extends Controller
 				->count();
 	}
 
+	/**
+	 * Retourne le score moyen des parties.
+	 * @param string|null $pseudo - Si non null retourne les parties de ce joueur.
+	 * @return float - Le score moyen.
+	 */
 	public function getMediumScore(string|null $pseudo)
 	{
-		file_put_contents("testtt",$pseudo);
-
 		/**
 		 * @var $belotteChallengeGames BeloteChallengeGame[]
 		 */
@@ -56,6 +67,12 @@ class BeloteChallengeStatisticsController extends Controller
 		return round($score/count($belotteChallengeGames),self::DECIMAL);
 	}
 
+	/**
+	 * Retourne le score moyen d'une manche.
+	 * @param int $round - Le numero de la manche.
+	 * @param string|null $pseudo - Si non null retourne les parties de ce joueur.
+	 * @return float - Le score moyen d'une manche.
+	 */
 	public function getMediumScorePerRound(int $round, string|null $pseudo)
 	{
 
@@ -84,6 +101,11 @@ class BeloteChallengeStatisticsController extends Controller
 		return round($score/count($belotteChallengeGames),self::DECIMAL);
 	}
 
+	/**
+	 * Retourne le score moyen de l'ensemble des manches.
+	 * @param string|null $pseudo - Si non null retourne les parties de ce joueur.
+	 * @return array - Les scores moyens par manches.
+	 */
 	public function getAllMediumScorePerRound(string|null $pseudo)
 	{
 		$scores = [];

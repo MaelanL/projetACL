@@ -8,9 +8,6 @@ import GameSelection from "@/Pages/Statistics/Component/GameSelection";
 function Statistics()
 {
 
-	const { userPseudo } = useStateContext();
-	const {gameSelected, setGameSelected } = useStateContext();
-
 	const [games, setGames] = useState<Game[]>([]);
 
 	useEffect(() => {

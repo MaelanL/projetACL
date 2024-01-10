@@ -47,6 +47,9 @@ class Card
 		return this;
 	}
 
+	/**
+	 * Retourne l'url de l'image de la carte.
+	 */
 	getImageUrl(): string
 	{
 		return "img/cards/"+this.value+"_"+this.type+".png";

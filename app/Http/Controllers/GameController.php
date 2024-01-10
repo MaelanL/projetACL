@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+
+	/**
+	 * Retourne les jeux à afficher.
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
 	public function get(): \Illuminate\Database\Eloquent\Collection
 	{
 		return Game::query()->where("display","=",true)

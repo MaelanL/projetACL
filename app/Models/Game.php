@@ -26,9 +26,4 @@ class Game extends Model
     protected $keyType = "integer";
     public $timestamps = false;
 
-	public function belote_challenge_game(): HasOne
-	{
-		return $this->hasOne(BeloteChallengeGame::class);
-	}
-
 }

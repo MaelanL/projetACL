@@ -13,6 +13,7 @@ export interface RawPlayer
 class Player
 {
 	id: number;
+	// le pseudo du joueur.
 	pseudo : string;
 
 

@@ -35,9 +35,4 @@ class CardsController extends Controller
 		// On retourne les cartes mélangées.
 		return ($cards->shuffle())->all();
 	}
-
-	public function test(Card $card1, Card $card2): int
-	{
-		return $card1->points+$card2->points;
-	}
 }
