@@ -1,0 +1,38 @@
+[
+    {
+        "id": 60,
+        "played_at": "2023-11-24 11:39:51",
+        "score": 0,
+        "finished": 1,
+        "player_id": 1,
+        "game_id": 1,
+        "rounds": [
+            {
+                "id": 10,
+                "round": 4,
+                "score": 3,
+                "belote_challenge_id": 60,
+                "card_1_id": 2,
+                "card_2_id": 23
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "played_at": "2023-11-24 11:42:13",
+        "score": 49,
+        "finished": 1,
+        "player_id": 1,
+        "game_id": 1,
+        "rounds": [
+            {
+                "id": 15,
+                "round": 4,
+                "score": 4,
+                "belote_challenge_id": 61,
+                "card_1_id": 25,
+                "card_2_id": 31
+            }
+        ]
+    }
+]

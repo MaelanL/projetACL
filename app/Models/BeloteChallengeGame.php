@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Classe représentant l'historique de jeu.
+ * Classe représentant une partie de Belote challenge.
  *
  * @property int $id - Identifiant de l'historique.
  * @property timestamp $played_at - Date de la partie.
@@ -17,6 +17,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property boolean $finished - Indique si la partie à été abandonnée ou non.
  * @property int $player_id - Identifiant du joueur.
  * @property int $game_id - Identifiant du jeu.
+ *
+ * @property BeloteChallengeRound[] $rounds - Les manches associées à la partie;
+ * @property Player $player - Le joueur;
+ * @property Game $game - Le jeu;
  *
  */
 
@@ -37,7 +41,7 @@ class BeloteChallengeGame extends Model
 
 	public function rounds(): HasMany
 	{
-		return $this->hasMany(BeloteChallengeRound::class);
+		return $this->hasMany(BeloteChallengeRound::class,"belote_challenge_id","id");
 	}
 
   public function player(): BelongsTo

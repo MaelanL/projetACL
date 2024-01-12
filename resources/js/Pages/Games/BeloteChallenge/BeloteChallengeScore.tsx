@@ -18,12 +18,12 @@ const card = [1,2,3,4,5,6];
 function BeloteChallengeScore()
 {
 
-	const [score, setScore] = useState<BeloteChallengeGame[]>([]);
+	const [scores, setScores] = useState<BeloteChallengeGame[]>([]);
 	useEffect(() => {
+
 		// Effectue la requête API au chargement du composant
-		axios.get<BeloteChallengeGame[]>("api/getBeloteChalenge").then((response) => {
-			setScore(response.data)
-			console.log(response.data)
+		BeloteChallengeController.getRecords().then((beloteChallengeGame) => {
+			setScores(beloteChallengeGame);
 		});
 	}, []);
 	return (
@@ -41,7 +41,7 @@ function BeloteChallengeScore()
 								<td>Player</td>
 							</tr>
 
-								{score.map((score, index) => (
+								{scores.map((score, index) => (
 									<tr className={"first"} key={index}>
 										<td>{index+1}</td>
 										<td>{score.played_at.toString()}</td>

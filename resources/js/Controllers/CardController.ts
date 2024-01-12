@@ -4,6 +4,10 @@ import Card, {RawCard} from "@/Models/Card";
 export default class CardController
 {
 
+	/**
+	 * Retourne les cartes d'un jeu.
+	 * @param gameName - Le nom du jeu.
+	 */
 	public static async getCards(gameName: string): Promise<Card[]> {
 		let cards: Card[] = [];
 		await	axios.get<RawCard[]>(`api/cards/${gameName}`)
@@ -13,15 +17,5 @@ export default class CardController
 				})
 			});
 			return cards;
-	}
-
-	public static async calculJeuRoundScore(card1: Card, card2: Card): Promise<number>
-	{
-		let score: number = 0;
-		await axios.post<number>(`api/test/${card1.id}/${card2.id}`, [card1,card2])
-			.then((response) => {
-				score = response.data;
-			});
-		return score;
 	}
 }

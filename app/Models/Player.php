@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property int $id - Identifiant du joueur.
  * @property string $pseudo - Pseudo du joueur.
+ *
+ * @property BeloteChallengeGame[] $belote_challenge_game - Les parties de belote challenge du joueur.
+ *
  */
 
 class Player extends Model
@@ -27,6 +30,14 @@ class Player extends Model
 	{
       return $this->hasMany(BeloteChallengeGame::class);
   }
+
+
+	public static function getPlayerByPseudo(string $pseudo): \Illuminate\Database\Eloquent\Builder|Model|Player|null
+	{
+		return Player::query()
+			->where("pseudo","=",$pseudo)
+			->first();
+	}
 
 
 

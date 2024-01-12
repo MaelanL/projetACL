@@ -8,6 +8,13 @@ import game from "@/Models/Game";
 export default class BeloteChallengeController
 {
 
+	/**
+	 * Calcule le score d'une manche.
+	 * @param card1 - La 1ere carte piochée.
+	 * @param card2 - La 2ème carte piochée.
+	 * @param roundNumber - Le numéro de la manche.
+	 * @param gameId - L'identifiant de la partie.
+	 */
 	public static async calculJeuRoundScore(card1: Card, card2: Card, roundNumber: number, gameId: number): Promise<number>
 	{
 		let score: number = 0;
@@ -18,6 +25,10 @@ export default class BeloteChallengeController
 		return score;
 	}
 
+	/**
+	 * Lance une partie de Belote challenge.
+	 * @param pseudo - Le pseudo du joueur lançant la partie.
+	 */
 	public static async startGame(pseudo: string): Promise<BeloteChallengeGame>
 	{
 		let beloteChallengeGame: BeloteChallengeGame = new BeloteChallengeGame();
@@ -26,6 +37,20 @@ export default class BeloteChallengeController
 				beloteChallengeGame = beloteChallengeGame.parse(response.data);
 			});
 		return beloteChallengeGame;
+	}
+
+	/**
+	 * Retourne les 10 meilleures parties de Belote challenge.
+	 */
+	public static async getRecords(): Promise<BeloteChallengeGame[]>
+	{
+		let records: BeloteChallengeGame[] = [];
+		await axios.get<BeloteChallengeGame[]>(`/api/getBeloteChallengeRecords/`).then((response) => {
+			response.data.forEach((game) => {
+				records.push(game);
+			});
+		});
+		return records;
 	}
 
 
