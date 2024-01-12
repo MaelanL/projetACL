@@ -56,15 +56,15 @@ export class Dropdown extends React.Component<React.PropsWithChildren<DropdownPr
 		return (
 			<div className={`dropdown ${this.state.collapseContent ? "collapsed" : ""}`}>
 				<p>
-					{(this.state.collapseContent ? "Déplier" : "Replier") + " le contenu"}
+					{(this.state.collapseContent ? "Replier" : "Déplier") + " le contenu"}
 					<button className={"collapse-dropdown icon-only"}
 									type={"button"}
 									onClick={this.handleCollapseClick.bind(this)}
 					>
 						{this.state.collapseContent ?
-							<i className="ri-arrow-down-s-line"></i>
-							:
 							<i className="ri-arrow-up-s-line"></i>
+							:
+							<i className="ri-arrow-down-s-line"></i>
 						}
 					</button>
 				</p>
