@@ -29,6 +29,8 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 	:
 
 	(
+		<div className='container'>
+		<div className='carte1'></div>
 
 		<div className={"pseudo-selection"}>
 			<h2>{gameSelected}</h2>
@@ -42,7 +44,7 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 					onChange={(event) => setPseudo(event.target.value)}
 					placeholder="Entrez votre pseudo"
 				/>
-
+			<br></br>
 			<Link className={"button"}
 				href={route(`${gameSelected.replace(" ","")}.app`)}
 				onClick={() =>{submit()}
@@ -52,6 +54,9 @@ function PseudoSelection({ gameName }: PseudoSelectionProps)
 			</Link>
 			</form>
 		</div>
+				<div className='carte2'></div>
+				</div>
+
 	);
 }
 
