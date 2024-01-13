@@ -1,31 +1,53 @@
 @import "../colors";
+.contain{
+	display:flex;
+	height: 50vb;
 
+}
+.regles{
+	padding:1em;
+	background-color: aliceblue;
+	height: 15em;
+	text-align: center;
+}
 .home
 {
-	display: flex;
+	text-align: center;
+	// display: flex;
+	margin:10%;
 	flex-direction: row;
 	flex-wrap: wrap;
 	column-gap: 1em;
 	row-gap: 1em;
-	text-align: center;
 
-
-	.games
-	{
-		display: flex;
-		flex-direction: row;
-		margin-left: auto;
-		margin-right: auto;
+	
+	// .games
+	// {
+	// 	// display: flex;
+	// 	// flex-direction: row;
+	// 	// margin-left: auto;
+	// 	// margin-right: auto;
+	// }
+	.carte{
+		flex:70%;
+		background-image: url("../Components/tas.png");
+		background-size:auto;
+		background-repeat: no-repeat;
+		background-position: center;
+		
 	}
-
 	.game
 	{
-
-		text-align: center;
-		margin-left: 2em;
+		margin-bottom: auto;
+		margin-top: auto;
+		flex:30%;
+		text-align: center ;
+		// margin-left: 2em;
 
 		h2
-		{
+		{	
+			font-size: x-large;
+			color: aliceblue;
 			font-weight: bold;
 		}
 
@@ -34,11 +56,10 @@
 			margin-bottom: 0.5em;
 		}
 
-		width: 20em;
-		//min-width: 30%;
-		//max-width: 30%;
+		// width: 25em;
 		padding: 0.5em 1em;
 		border-radius: 0.5em;
 		box-shadow: 0 0 0.33em 0 rgba(0, 0, 0, 0.15);
+		
 	}
 }

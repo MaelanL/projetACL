@@ -28,6 +28,9 @@ function BeloteChallengeScore()
 	}, []);
 	return (
 		<>
+		<div className='container'>
+			<div className='carte1'></div>
+
 			<div className={"score"}>
 
 				<div className={"score"}>
@@ -55,6 +58,8 @@ function BeloteChallengeScore()
 				</div>
 
 			</div>
+			<div className='carte2'></div>
+		</div>
 
 		</>
 	);

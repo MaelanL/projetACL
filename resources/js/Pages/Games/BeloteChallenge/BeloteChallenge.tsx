@@ -75,7 +75,7 @@ function BeloteChallenge() {
 
    (
     <div className="background-container">
-      <div>
+      <div className="info">
         <div className="score_and_round">Manche: {roundNumber}</div>
         <div className="score_and_round">Score: {score}</div>
 				{roundScore != null &&

@@ -25,9 +25,9 @@ function Home()
 						<GameSelection key={index} game={game}/>
 					))}
 				</div>
-
+				
 			</div>
-
+			<div className='regles'><h1>Oui oui les regels</h1></div>
 		</>
 	);
 };
