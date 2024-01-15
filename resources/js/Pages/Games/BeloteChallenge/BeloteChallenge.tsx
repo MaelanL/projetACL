@@ -79,7 +79,7 @@ function BeloteChallenge() {
         <div className="score_and_round">Manche: {roundNumber}</div>
         <div className="score_and_round">Score: {score}</div>
 				{roundScore != null &&
-					<div className="score_and_round">Score de manche: {score}</div>
+					<div className="score_and_round">Score de manche: {roundScore}</div>
 				}
 			</div>
       <div className="game-container">
