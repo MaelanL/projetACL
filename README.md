@@ -3,26 +3,23 @@ projet Belote de Jonathan, Pierre et Maelan
 
 # Installation
 
-## XAMPP
-
-Télécharger xampp 8.2.4 : https://www.apachefriends.org/download.html
-(tuto : https://www.youtube.com/watch?v=e6xpv83tC50&list=LL&index=2&t=322s)
-
 ## Composer
 
 Installer composer : https://getcomposer.org/download/
 
 ## Mise en place du projet
 
-- Une fois le dépôt cloné, executer les commandes suivantes :
 - composer update
-- npm update --force
+- npm install
+- npm update
 
-- Renommer le fichier .env.example -> .env
+- importer la bdd (nom : acldb)
+
 
 # Lancer le projet
 
-Lancer les serveurs apache et mysql dans xampp
+Nous avons utilisé xampp pour le serveur mysql
+- Lancer le serveur mysql dans xampp (port 3306)
 
 A la racine du projet executer les commandes suivantes :
 - php artisan serve
@@ -30,10 +27,13 @@ A la racine du projet executer les commandes suivantes :
 
 
 
-# Commandes
+# Organisation
 
-- Créer un model php : php artisan make:model ClassName -m
-- Migrations (permet de créer/modifier les tables) : php artisan migrate
-- Créer un seeder pour insérer en dur dans la bdd : php artisan make:seeder TableNameSeeder
-- Insérer les données d'un seeder en bdd : php artisan db:seed --class=TableNameSeeder
-- Créer un controlleur : php artisan make:controller TableNameController
+- Les controleurs php se trouvent dans : app/Http/Controllers 
+- Les modèles php se trouvent dans : app/Models 
+- Les controleurs react se trouvent dans : resources/js/Controllers
+- Les modèles react se trouvent dans : resources/js/Models
+- Les pages web de l'app se trouvent dans : resources/js/Pages
+- Les routes des appels api se trouvent dans : routes/api.php
+- Les routes des pages web se trouvent dans : routes/web.php
+
