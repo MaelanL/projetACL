@@ -38,6 +38,7 @@ export default function GameFinished(props: GameFinishedProps) {
 		plugins: {
 			title: {
 				display: true,
+				color: 'rgb(255,255,255)',
 				text: 'Statistiques des parties jouées',
 			},
 		},

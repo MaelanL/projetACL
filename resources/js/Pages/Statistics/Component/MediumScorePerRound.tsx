@@ -40,6 +40,7 @@ export default function MediumScorePerRound(props: mediumScorePerRoundProps) {
 			title: {
 				display: true,
 				text: 'Statistique des scores moyens par manche',
+				color: 'rgb(255,255,255)'
 			},
 		},
 		responsive: true,

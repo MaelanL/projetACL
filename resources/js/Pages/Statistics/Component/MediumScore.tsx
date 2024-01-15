@@ -40,7 +40,8 @@ export default function MediumScore(props: mediumScoreProps) {
 				position: 'top' as const,
 			},
 			title: {
-				display: true,
+				display: true,				
+				color: 'rgb(255,255,255)',
 				text: 'Statistique du score moyen par partie',
 			},
 		},
