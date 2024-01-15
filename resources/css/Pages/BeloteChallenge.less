@@ -18,6 +18,12 @@
 }
 
 .piocher-button {
+  h2{
+    margin-left: 1em;
+    margin-right: 1em;
+    border-radius: 1em;
+    background-color: rgb(38, 102, 51);
+  }
   position: absolute;
   width: 200px; /* Assurez-vous que la largeur correspond à celle de la carte */
   height: 300px; /* Assurez-vous que la hauteur correspond à celle de la carte */
@@ -41,11 +47,18 @@
 
 	.card
 	{
+    color:antiquewhite;
     margin-top: 10em;
 		margin-left: 0.5em;
 	}
 }
 .info{
+  h2{
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.5), /* Ombre principale pour la profondeur */
+    6px 6px 0px rgba(0,0,0,0.3), /* Ombre secondaire pour plus de profondeur */
+    9px 9px 0px rgba(0,0,0,0.2); 
+  }
+  color: white;
   background-image: url("../Components/tapis.jpg");
   background-size:100% 100%;
   position:fixed;

@@ -88,7 +88,7 @@ function BeloteChallenge() {
           <div className="card">
             <img src="/img/cards/back.png" alt="Back Card" />
             <button className="piocher-button" onClick={handlePiocherClick}>
-              Piocher
+              <h2>Piocher</h2>
             </button>
           </div>
           {card2 && <img className={"card"} src={card2.getImageUrl()} alt="Card 2" />}
